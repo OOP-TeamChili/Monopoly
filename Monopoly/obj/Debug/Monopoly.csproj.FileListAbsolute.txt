@@ -1,0 +1,6 @@
+C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\Monopoly.exe.config
+C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\Monopoly.exe
+C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
+C:\Users\Alex\Desktop\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\Monopoly\Monopoly\obj\Debug\Monopoly.exe
+C:\Users\Alex\Desktop\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
