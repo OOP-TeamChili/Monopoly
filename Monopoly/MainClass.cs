@@ -12,7 +12,7 @@
             Console.WindowHeight = Console.LargestWindowHeight - 1;
             Console.WindowWidth = Console.LargestWindowWidth - 4;
             ConsoleUtils.CenterConsole();
-            #endregion Console and font resizing
+            #endregion Console and font resizingzzz
         }
     }
 }

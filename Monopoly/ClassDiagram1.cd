@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Monopoly.ConsoleHelper" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAgAAAIAAAAAAAAAoAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Drawing\ConsoleFont.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.MainClass" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>MainClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.ConsoleUtils" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAEgAAA=</HashCode>
+      <FileName>Drawing\SetWindowPosition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Player">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAABAAAAEAAAAAEQAAABEAAAAAAAAAAQBAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Dice">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBAACAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Bank">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAABAAAAAAAACAAAAAAAAAAEAAAABAAA=</HashCode>
+      <FileName>Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Element">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAAAAAAABAAA=</HashCode>
+      <FileName>Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Space">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Space.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.purchasableSpace">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>purchasableSpaces.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.NotPurchasableSpace">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NotPurchasableSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.StartSpace">
+    <Position X="6.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StartSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.PrisonSpace">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrisonSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.LuckySpace">
+    <Position X="10" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LuckySpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.BadLuckSpace">
+    <Position X="11" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BadLuckCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.GoodLuckSpace">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoodLuckCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.PropertySpace">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertySpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.RailRoad">
+    <Position X="13.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RailRoad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.UtilitySpace">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UtilitySpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Monopoly.ConsoleFont" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAABAAAAA=</HashCode>
+      <FileName>Drawing\ConsoleFont.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

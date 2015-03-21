@@ -44,13 +44,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleFont.cs" />
+    <Compile Include="BadLuckCard.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="Dice.cs" />
+    <Compile Include="Drawing\ConsoleFont.cs" />
+    <Compile Include="Element.cs" />
+    <Compile Include="GoodLuckCard.cs" />
+    <Compile Include="LuckySpace.cs" />
     <Compile Include="MainClass.cs" />
+    <Compile Include="NotPurchasableSpace.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PrisonSpace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetWindowPosition.cs" />
+    <Compile Include="Drawing\SetWindowPosition.cs" />
+    <Compile Include="PropertySpace.cs" />
+    <Compile Include="purchasableSpaces.cs" />
+    <Compile Include="RailRoad.cs" />
+    <Compile Include="Space.cs" />
+    <Compile Include="StartSpace.cs" />
+    <Compile Include="UtilitySpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameLogic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
