@@ -10,3 +10,9 @@ C:\Users\Konstantin\Documents\GitHub\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
 C:\Users\Konstantin\Documents\GitHub\Monopoly\Monopoly\bin\Debug\Monopoly.exe
 C:\Users\Konstantin\Documents\GitHub\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
 C:\Users\Konstantin\Documents\GitHub\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.exe.config
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\obj\Debug\Monopoly.exe
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.exe
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
