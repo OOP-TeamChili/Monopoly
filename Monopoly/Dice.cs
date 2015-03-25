@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class Dice
     {
         private int valueDice;
-       
-        //Emil don't need of constructor for Dice class
-        //private Random rand= new Random();
+        private Random rand;
 
-        //public Dice(int firstDice,int secondDice)
-        //{
-        //
-        //    
-        //}
+        public Dice()
+        {
+            this.valueDice = 0;
+            rand = new Random();
+        }
 
         public int ValueDice
         {
@@ -26,27 +24,12 @@ namespace Monopoly
             }
             set
             {
-                valueDice = value;
+                this.valueDice = value;
             }
         }
-
-       
-        public int totalValue
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            private set
-            {
-            }
-        }
-
         public void RollDice()
         {
-            throw new System.NotImplementedException();
+            this.valueDice = rand.Next(1, 7);
         }
-
-
     }
 }
