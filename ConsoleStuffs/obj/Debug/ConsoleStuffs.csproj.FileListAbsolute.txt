@@ -1,0 +1,4 @@
+C:\Users\Alex\Desktop\Monopoly\ConsoleStuffs\bin\Debug\ConsoleStuffs.dll
+C:\Users\Alex\Desktop\Monopoly\ConsoleStuffs\bin\Debug\ConsoleStuffs.pdb
+C:\Users\Alex\Desktop\Monopoly\ConsoleStuffs\obj\Debug\ConsoleStuffs.dll
+C:\Users\Alex\Desktop\Monopoly\ConsoleStuffs\obj\Debug\ConsoleStuffs.pdb

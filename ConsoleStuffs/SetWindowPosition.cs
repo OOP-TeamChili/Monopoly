@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;           // NOTE: Project + Add Reference required
-using System.Windows.Forms;     // NOTE: Project + Add Reference required
+using System.Windows.Forms;    // NOTE: Project + Add Reference required
 using System.Runtime.InteropServices;
 
 namespace Monopoly

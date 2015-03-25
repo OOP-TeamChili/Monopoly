@@ -1,24 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Monopoly.ConsoleHelper" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAgAAAIAAAAAAAAAoAgAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Drawing\ConsoleFont.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Monopoly.MainClass" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>MainClass.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.ConsoleUtils" Collapsed="true">
-    <Position X="0.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAEgAAA=</HashCode>
-      <FileName>Drawing\SetWindowPosition.cs</FileName>
+      <FileName>01.MainClass.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Monopoly.Player">
@@ -126,12 +112,17 @@
       <FileName>UtilitySpace.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Monopoly.ConsoleHelper" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Monopoly.ConsoleUtils" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Struct Name="Monopoly.ConsoleFont" Collapsed="true">
     <Position X="0.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAABAAAAA=</HashCode>
-      <FileName>Drawing\ConsoleFont.cs</FileName>
-    </TypeIdentifier>
+    <TypeIdentifier />
   </Struct>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

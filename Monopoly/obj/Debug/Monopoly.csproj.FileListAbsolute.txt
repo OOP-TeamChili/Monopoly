@@ -16,3 +16,5 @@ D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
 D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
 D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.exe
 D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
+C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.dll
+C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.pdb
