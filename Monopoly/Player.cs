@@ -30,11 +30,11 @@ namespace Monopoly
         {
             get
             {
-                return position;
+                return this.position;
             }
             set
             {
-                position = value;
+                this.position = value;
             }
         }
 

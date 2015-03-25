@@ -50,7 +50,7 @@ namespace Monopoly
                     throw new ArgumentNullException("Property name cannot be null or empty");
                 }
 
-                this.name = Name;
+                this.name = value;
             }
         }
 
@@ -117,7 +117,7 @@ namespace Monopoly
                 this.mortgageValue = value;
             }
         }
-        private bool Mortgaged
+        public bool Mortgaged
         {
             get
             {
@@ -129,7 +129,7 @@ namespace Monopoly
             }
         }
 
-        private bool Owned
+        public bool Owned
         {
             get
             {
