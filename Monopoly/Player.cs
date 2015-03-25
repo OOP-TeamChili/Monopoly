@@ -5,36 +5,64 @@ using System.Text;
 
 namespace Monopoly
 {
-    public class Player:Element
+    public class Player : Element
     {
-        //this is forchecking the turns 
-        bool IsGameOver;
-        public int PlayerNumber { get; set; }
-        //
         private int bankroll;
-        public string Name { get; set; }
+        private string name;
+        private int position;
+        private List<purchasableSpace> listOfProperties;
+        public int PlayerNumber { get; set; }
+
+
         //private List<purchasableSpaces> ownedSpaces = new List<purchasableSpaces>();
         private int totalValue;
 
-        public Player()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Player(int playerNumber, string playerName)
+        public Player(int playerNumber,string inputName, int startPos = 0, int startBankroll = 1500)
         {
             this.PlayerNumber = playerNumber;
-            this.Name = playerName;
+            this.Name = inputName;
+            this.Position = startPos;
+            this.Bankroll = startBankroll;
+            this.listOfProperties=new List<purchasableSpace>();
+        }
+
+        public int Position
+        {
+            get
+            {
+                return position;
+            }
+            set
+            {
+                position = value;
+            }
         }
 
         public int Bankroll
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.bankroll;
             }
             set
             {
+                this.bankroll = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            private set
+            {
+                if (value == null || value == string.Empty)
+                {
+                    throw new NullReferenceException("Invaid name");
+                }
+                this.name = value;
             }
         }
 
@@ -48,28 +76,37 @@ namespace Monopoly
             {
             }
         }
+
+        public List<purchasableSpace> ListOfProperties
+        {
+            get
+            {
+                return new List<purchasableSpace>(this.listOfProperties);
+            }
+        }
+
         //TODO: token 
 
-        public void AddCash()
+        public void AddCash(int sumToAdd)
         {
-            throw new System.NotImplementedException();
+            this.Bankroll = this.Bankroll + sumToAdd;
+        }
+        public void RemoveCash(int sumToRemove)
+        {
+            this.Bankroll = this.Bankroll - sumToRemove;
         }
 
-        public void AddSpace()
+        public void AddSpace(purchasableSpace boughtProperty)
         {
-            throw new System.NotImplementedException();
+            listOfProperties.Add(boughtProperty);
         }
 
-        public void RemoveCash()
-        {
-            throw new System.NotImplementedException();
-        }
+       
 
         public override string ToString()
         {
             throw new System.NotImplementedException();
-            
-            
+
         }
     }
 }

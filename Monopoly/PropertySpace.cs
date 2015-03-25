@@ -7,5 +7,9 @@ namespace Monopoly
 {
     public class PropertySpace:purchasableSpace
     {
+        public PropertySpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent)
+             :base(currentName,currentPrice,currentMortgageValue,currentRent)
+        {                  
+        }
     }
 }

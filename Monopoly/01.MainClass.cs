@@ -85,6 +85,8 @@
                 players[3] = new Player(4, Console.ReadLine());
             }
             #endregion playersInitializingplayer
+            Player[] playersArray = new Player[playersCount];
+            GameLogic.GameManager.Game(playersArray);
 
         }
     }

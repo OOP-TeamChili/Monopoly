@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Monopoly
 {
-    public class RailRoad:purchasableSpace
+    public class RailRoad
+        //:purchasableSpace
     {
     }
 }

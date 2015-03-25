@@ -7,15 +7,30 @@ namespace Monopoly
 {
     public class Dice
     {
-        private int valueFirstDice;
-        private int valueSecondDice;
-        private Random rand= new Random();
+        private int valueDice;
+       
+        //Emil don't need of constructor for Dice class
+        //private Random rand= new Random();
 
-        public Dice()
+        //public Dice(int firstDice,int secondDice)
+        //{
+        //
+        //    
+        //}
+
+        public int ValueDice
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                return this.valueDice;
+            }
+            set
+            {
+                valueDice = value;
+            }
         }
 
+       
         public int totalValue
         {
             get
