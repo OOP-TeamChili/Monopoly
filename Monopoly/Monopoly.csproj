@@ -55,6 +55,7 @@
     <Compile Include="GoodLuckCard.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="IRotateble.cs" />
+    <Compile Include="ISavable.cs" />
     <Compile Include="MoveCard.cs" />
     <Compile Include="SafeCard.cs" />
     <Compile Include="SecondDice.cs" />

@@ -28,7 +28,7 @@
             {
                 return this.cash;
             }
-            private set
+            protected set
             {
                 if (value < MinCash)
                 {
