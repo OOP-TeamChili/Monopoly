@@ -18,3 +18,5 @@ D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.exe
 D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
 C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.dll
 C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.pdb
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.dll
+D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.pdb

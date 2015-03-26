@@ -15,6 +15,7 @@ namespace Monopoly
         public string Name { get; set; }
         //private List<purchasableSpaces> ownedSpaces = new List<purchasableSpaces>();
         private int totalValue;
+        private List<ChanceCard> cards;
 
         public Player()
         {
@@ -25,6 +26,7 @@ namespace Monopoly
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
+            this.cards = new List<ChanceCard>();
         }
 
         public int Bankroll
@@ -48,7 +50,49 @@ namespace Monopoly
             {
             }
         }
+
+        public List<ChanceCard> Cards
+        {
+            get
+            {
+                return new List<ChanceCard>(cards);
+            }
+        }
         //TODO: token 
+
+        //method to take and keep the card for later.
+        public void KeepCard(ChanceCard card)
+        {
+            this.cards.Add(card);
+        }
+
+        //Method to move the player when takes a chance card.
+        public void CardMove(ChanceCard card)
+        {
+            //player.position += this.SquaresToMove
+            throw new NotImplementedException();
+        }
+
+        //Method to pay or get paid when picks up a card.
+        public void CardPay(ChanceCard card)
+        {
+            if (card.PayFee)
+            {
+                this.Bankroll = this.Bankroll - (int)card.Cash;
+            }
+            else if (!card.PayFee)
+            {
+                this.Bankroll = this.Bankroll - (int)card.Cash;
+            }
+        }
+
+        //Method to mvoe the player to a specific space by card.
+        public void GoToSpace(ChanceCard card)
+        {
+            //if space owned - pay the player
+            //if not - decide whether to buy or not.
+            CardPay(card); // this method stays because there are cards that move the player and the player pays or get paid by the card.
+        }
 
         public void AddCash()
         {

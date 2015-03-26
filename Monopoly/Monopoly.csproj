@@ -47,6 +47,7 @@
     <Compile Include="BadLuckCard.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BuildingType.cs" />
+    <Compile Include="ChanceCard.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Element.cs" />
