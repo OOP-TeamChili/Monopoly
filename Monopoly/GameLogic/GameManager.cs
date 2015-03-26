@@ -15,7 +15,7 @@ namespace Monopoly.GameLogic
         public static void Game(Player[] players)
         {
             List<Space> listOfSpaces = new List<Space>();
-
+            int pairs = 0;
             //PROPERTIES JUST FOR EXAMPLE
             for (int i = 0; i < 42; i++)
             {
@@ -29,23 +29,31 @@ namespace Monopoly.GameLogic
             {
                 Dice dice1 = new Dice();
                 Dice dice2 = new Dice();
-                Random rand1 = new Random();
-                Random rand2 = new Random();                
-                dice1.ValueDice = rand1.Next(DiceMinValue, DiceMaxValue + 1);
-                dice2.ValueDice = rand2.Next(DiceMinValue, DiceMaxValue + 1);
+                Random rand = new Random();                            
+                dice1.ValueDice = rand.Next(DiceMinValue, DiceMaxValue + 1);
+                dice2.ValueDice = rand.Next(DiceMinValue, DiceMaxValue + 1);
                 Console.WriteLine(dice1.ValueDice);
                 Console.WriteLine(dice2.ValueDice);
+                if (dice1.ValueDice == dice2.ValueDice)
+                {
+                    pairs++;
+                    if (pairs == 3)
+                    {
+                        //TO DO: player goes to prison
+                    }
+                }
                 var player = players[currentPlayerCounter];
                 player.Position = player.Position + dice1.ValueDice + dice2.ValueDice;
-                var currentProperty = listOfSpaces[player.Position];
+                    ;                
                 if (player.Position > PositionsOnBoard - 1)
                 {
                     player.Position = player.Position - PositionsOnBoard;
                     player.AddCash(CycleCash);
                 }
-                if (currentProperty is PropertySpace)
+                var currentSpace = listOfSpaces[player.Position];
+                if (currentSpace is PropertySpace)
                 {
-                    PropertySpace currentPropertySpace = (PropertySpace)currentProperty;
+                    PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
                     if (currentPropertySpace.Owned == false)
                     {
                         FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentPropertySpace);
@@ -56,6 +64,22 @@ namespace Monopoly.GameLogic
                         OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
                     }
                 }
+                //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE
+                //TODO:currentSpace is Utility
+                //TODO:currentSpace is RailRoad
+                //TODO:currentSpace is BadLuckCard
+                //TODO:currentSpace is LuckySpace
+                //TODO:currentSpace is GoodLuckCard
+                //TODO:currentSpace is parking
+                //TODO:currentSpace is Jail/JustVisiting
+                if (dice1.ValueDice != dice2.ValueDice)
+                {
+                    currentPlayerCounter++;
+                    if (currentPlayerCounter > players.Length - 1)
+                    {
+                        currentPlayerCounter = 0;
+                    }
+                }             
                
 
             }
@@ -98,14 +122,14 @@ namespace Monopoly.GameLogic
 
         private static void PayingMoney(Player player, int moneyToPay, Player otherPlayer)
         {
-            player.RemoveCash(moneyToPay);
-            if (player.Bankroll < 0)
+
+            if (player.Bankroll - moneyToPay < 0)
             {
                 Console.WriteLine("Do you want to see your properties:");
                 Console.WriteLine("Yes(1) or No(2)");
                 int decision = int.Parse(Console.ReadLine());
                 while (true)
-                {                   
+                {
                     if (decision != 1 && decision != 2)
                     {
                         Console.WriteLine("Try again to choose.");
@@ -119,16 +143,52 @@ namespace Monopoly.GameLogic
                 if (decision == 1)
                 {
                     ShowPlayerProperties(player);
+                    int mortgagePropertiesValue = 0;
+                    while (player.Bankroll + mortgagePropertiesValue - moneyToPay < 0)
+                    {
+                        Console.WriteLine("Enter the numbers in list the Properties to mortgage (ex. 1,2...):");
+                        string inputNumbers = Console.ReadLine();
+                        int[] propertiesToMortgage = inputNumbers.Split(new char[] { ',' },
+                            StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                        for (int i = 0; i < propertiesToMortgage.Length; i++)
+                        {
+                            mortgagePropertiesValue = mortgagePropertiesValue + (int)player.ListOfProperties[propertiesToMortgage[i]].MortgageValue;
+                        }
+                        if (player.Bankroll + mortgagePropertiesValue - moneyToPay >= 0)
+                        {
+                            for (int j = 0; j < propertiesToMortgage.Length; j++)
+                            {
+                                player.ListOfProperties[propertiesToMortgage[j]].Mortgaged = true;
+                                player.Bankroll = player.Bankroll + (int)player.ListOfProperties[propertiesToMortgage[j]].MortgageValue;
+                            }
+                            player.RemoveCash(moneyToPay);
+                            otherPlayer.AddCash(moneyToPay);
+                        }
+                        else if (player.Bankroll + mortgagePropertiesValue - moneyToPay < 0
+                            && propertiesToMortgage.Length < player.ListOfProperties.Count)
+                        {
+                            mortgagePropertiesValue = 0;
+                        }
+                        else
+                        {
+                            //TO DO: player is bankrupt
+                        }
+                    }
                 }
             }
-            otherPlayer.AddCash(moneyToPay);
+            else
+            {
+                player.RemoveCash(moneyToPay);
+                otherPlayer.AddCash(moneyToPay);
+            }
+            
         }
 
         private static void ShowPlayerProperties(Player player)
         {
             for (int i = 0; i < player.ListOfProperties.Count; i++)
             {
-                Console.WriteLine("Name:{0} Price:{1} ",
+                Console.WriteLine("Number in List:{0} Name:{1} Price:{2} ",i+1,
                     player.ListOfProperties[i].Name, player.ListOfProperties[i].BuyingPrice);
                 Console.WriteLine("Selling Price:{0} Mortgaged:{1}", player.ListOfProperties[i].SellingPrice, player.ListOfProperties[i].Mortgaged);
                 Console.WriteLine("Mortgage value:{0}", player.ListOfProperties[i].MortgageValue);
@@ -142,14 +202,15 @@ namespace Monopoly.GameLogic
             int decision = int.Parse(Console.ReadLine());
             if (decision == 1)
             {
-                if (player.Bankroll < currentPropertySpace.SellingPrice)
+                if (player.Bankroll < currentPropertySpace.BuyingPrice)
                 {
                     Console.WriteLine("Not Enough Money To Buy The Property");
                 }
                 else
                 {
-                    player.Bankroll = player.Bankroll - (int)currentPropertySpace.SellingPrice;
+                    player.Bankroll = player.Bankroll - (int)currentPropertySpace.BuyingPrice;
                     player.AddSpace(currentPropertySpace);
+                    currentPropertySpace.Owned = true;
                 }
             }
         }
