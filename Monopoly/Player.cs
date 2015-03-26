@@ -15,7 +15,7 @@ namespace Monopoly
         public string Name { get; set; }
         //private List<purchasableSpaces> ownedSpaces = new List<purchasableSpaces>();
         private int totalValue;
-        private List<ChanceCard> cards;
+        private List<SafeCard> cards;
 
         public Player()
         {
@@ -26,7 +26,7 @@ namespace Monopoly
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
-            this.cards = new List<ChanceCard>();
+            this.cards = new List<SafeCard>();
         }
 
         public int Bankroll
@@ -52,17 +52,17 @@ namespace Monopoly
             }
         }
 
-        public List<ChanceCard> Cards
+        public List<SafeCard> Cards
         {
             get
             {
-                return new List<ChanceCard>(cards);
+                return new List<SafeCard>(cards);
             }
         }
         //TODO: token 
 
         //method to take and keep the card for later.
-        public void KeepCard(ChanceCard card)
+        public void KeepCard(SafeCard card)
         {
             this.cards.Add(card);
         }

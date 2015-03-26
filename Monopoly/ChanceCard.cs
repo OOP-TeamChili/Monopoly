@@ -1,7 +1,7 @@
 ﻿namespace Monopoly
 {
     using System;
-    public class ChanceCard : NotPurchasableSpace
+    public abstract class ChanceCard
     {
         private const decimal MinCash = 0;
 
