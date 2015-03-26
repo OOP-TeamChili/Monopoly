@@ -47,6 +47,7 @@
     <Compile Include="BadLuckCard.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BuildingType.cs" />
+    <Compile Include="CardType.cs" />
     <Compile Include="ChanceCard.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
@@ -54,7 +55,9 @@
     <Compile Include="GoodLuckCard.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="IRotateble.cs" />
+    <Compile Include="MoveCard.cs" />
     <Compile Include="SecondDice.cs" />
+    <Compile Include="SpaceCard.cs" />
     <Compile Include="Street.cs" />
     <Compile Include="LuckySpace.cs" />
     <Compile Include="01.MainClass.cs" />

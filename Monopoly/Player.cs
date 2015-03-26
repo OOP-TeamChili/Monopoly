@@ -37,6 +37,7 @@ namespace Monopoly
             }
             set
             {
+                this.bankroll = value;
             }
         }
 
@@ -76,13 +77,13 @@ namespace Monopoly
         //Method to pay or get paid when picks up a card.
         public void CardPay(ChanceCard card)
         {
-            if (card.PayFee)
+            if (card.CardType == CardType.BadLuckCard)
             {
                 this.Bankroll = this.Bankroll - (int)card.Cash;
             }
-            else if (!card.PayFee)
+            else if (card.CardType == CardType.LuckyCard)
             {
-                this.Bankroll = this.Bankroll - (int)card.Cash;
+                this.Bankroll = this.Bankroll + (int)card.Cash;
             }
         }
 
