@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Monopoly
 {
-    public class UtilitySpace
-        //:purchasableSpace
+    public class UtilitySpace:purchasableSpace
     {
     }
 }

@@ -32,5 +32,26 @@ namespace ConsoleStuffs
             Console.WriteLine();
             Console.WriteLine();
         }
+
+        public static string[,] MakeDices(string location, string[,] dice)
+        {
+            dice = new string[5,11];
+            StreamReader splashScreenReader = new StreamReader(location);
+            using (splashScreenReader)
+            {
+                string currentLine = splashScreenReader.ReadLine();
+                int row = 0;
+                while (currentLine != null)
+                {
+                    for (int i = 0; i < currentLine.Length; i++)
+                    {
+                        dice[row, i] = currentLine[i].ToString();
+                    }
+                    currentLine = splashScreenReader.ReadLine();
+                    row++;
+                }
+            }
+                return dice;
+        }
     }
 }

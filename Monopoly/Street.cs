@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Street 
-        //: Property
+    public class Street : Property
     {
         private const byte MinBuildings = 0;
         private const byte MaxBuildings = 4;
@@ -13,7 +12,7 @@
         private Color color;
 
         public Street(string currentName, Color currentColor, decimal currentPrice, decimal currentMortgageValue, decimal currentRent, decimal currentBuildingBuyPrice, decimal currentBuildingSellPrice)
-           // : base(currentName, currentPrice, currentMortgageValue, currentRent)
+            : base(currentName, currentPrice, currentMortgageValue, currentRent)
         {
             this.Color = currentColor;
             this.buildings = new List<Building>();            

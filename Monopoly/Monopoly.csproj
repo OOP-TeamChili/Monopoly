@@ -50,9 +50,10 @@
     <Compile Include="Color.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Element.cs" />
-    <Compile Include="GameLogic\GameManager.cs" />
     <Compile Include="GoodLuckCard.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="IRotateble.cs" />
+    <Compile Include="SecondDice.cs" />
     <Compile Include="Street.cs" />
     <Compile Include="LuckySpace.cs" />
     <Compile Include="01.MainClass.cs" />
@@ -72,7 +73,9 @@
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GameLogic\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleStuffs\ConsoleStuffs.csproj">
       <Project>{87381260-f9a3-415d-a6ca-3286083267ce}</Project>

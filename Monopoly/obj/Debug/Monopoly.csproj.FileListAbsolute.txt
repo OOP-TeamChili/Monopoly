@@ -18,14 +18,3 @@ D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.exe
 D:\Dropbox\TelerikAcademy\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
 C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.dll
 C:\Users\Alex\Desktop\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.pdb
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\bin\Debug\Monopoly.exe.config
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\obj\Debug\Monopoly.exe
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\obj\Debug\Monopoly.pdb
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\bin\Debug\Monopoly.exe
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.dll
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\bin\Debug\ConsoleStuffs.pdb
-C:\Users\private\Desktop\Monopoly\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
-D:\TerelikAcademy\TeamWorkOOP\monopoly\Monopoly\bin\Debug\Monopoly.exe.config
-D:\TerelikAcademy\TeamWorkOOP\monopoly\Monopoly\obj\Debug\Monopoly.exe
-D:\TerelikAcademy\TeamWorkOOP\monopoly\Monopoly\obj\Debug\Monopoly.pdb
