@@ -16,17 +16,24 @@ namespace Monopoly
         //private List<purchasableSpaces> ownedSpaces = new List<purchasableSpaces>();
         private int totalValue;
         private List<ISavable> cards;
+        
+        private int position;
+        private List<purchasableSpace> listOfProperties;
+      
 
         public Player()
         {
             throw new NotImplementedException();
         }
 
-        public Player(int playerNumber, string playerName)
+        public Player(int playerNumber, string playerName, int startPos = 0, int startBankroll = 1500)
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
             this.cards = new List<ISavable>();
+            this.Position = startPos;
+            this.Bankroll = startBankroll;
+            this.listOfProperties = new List<purchasableSpace>();
         }
 
         public int Bankroll
@@ -38,6 +45,17 @@ namespace Monopoly
             set
             {
                 this.bankroll = value;
+            }
+        }
+        public int Position
+        {
+            get
+            {
+                return this.position;
+            }
+            set
+            {
+                this.position = value;
             }
         }
 
@@ -57,6 +75,14 @@ namespace Monopoly
             get
             {
                 return new List<ISavable>(cards);
+            }
+        }
+
+        public List<purchasableSpace> ListOfProperties
+        {
+            get
+            {
+                return new List<purchasableSpace>(this.listOfProperties);
             }
         }
         //TODO: token 
@@ -95,19 +121,19 @@ namespace Monopoly
             CardPay(card); // this method stays because there are cards that move the player and the player pays or get paid by the card.
         }
 
-        public void AddCash()
+        public void AddCash(int moneyToAdd)
         {
-            throw new System.NotImplementedException();
+            this.Bankroll = this.Bankroll + moneyToAdd;
         }
 
-        public void AddSpace()
+        public void AddSpace(purchasableSpace  boughtProperty)
         {
-            throw new System.NotImplementedException();
+            listOfProperties.Add(boughtProperty);
         }
 
-        public void RemoveCash()
+        public void RemoveCash(int moneyToRemove)
         {
-            throw new System.NotImplementedException();
+            this.Bankroll = this.Bankroll - moneyToRemove;
         }
 
         public override string ToString()

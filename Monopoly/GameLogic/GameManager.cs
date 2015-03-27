@@ -24,7 +24,9 @@ namespace Monopoly.GameLogic
                 listOfSpaces.Add(newProperty);
             }
             Console.Clear();
-            int currentPlayerCounter = 0;
+            int currentPlayerCounter = 0;          
+  
+            //Whil LOOP for the game logic - it iterates over each player
             while (true)
             {
                 Dice dice1 = new Dice();
@@ -42,6 +44,7 @@ namespace Monopoly.GameLogic
                         //TO DO: player goes to prison
                     }
                 }
+                //Defining which player's turn is
                 var player = players[currentPlayerCounter];
                 player.Position = player.Position + dice1.ValueDice + dice2.ValueDice;
                     ;                
@@ -50,7 +53,10 @@ namespace Monopoly.GameLogic
                     player.Position = player.Position - PositionsOnBoard;
                     player.AddCash(CycleCash);
                 }
+                //Definig where this player is
                 var currentSpace = listOfSpaces[player.Position];
+                
+                //Case if the Player stepped on a property space
                 if (currentSpace is PropertySpace)
                 {
                     PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
@@ -84,7 +90,26 @@ namespace Monopoly.GameLogic
 
             }
         }
-
+        //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
+        private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PropertySpace currentPropertySpace)
+        {
+            Console.WriteLine("Player to decide - buy(1) OR pass(2)");
+            int decision = int.Parse(Console.ReadLine());
+            if (decision == 1)
+            {
+                if (player.Bankroll < currentPropertySpace.BuyingPrice)
+                {
+                    Console.WriteLine("Not Enough Money To Buy The Property");
+                }
+                else
+                {
+                    player.Bankroll = player.Bankroll - (int)currentPropertySpace.BuyingPrice;
+                    player.AddSpace(currentPropertySpace);
+                    currentPropertySpace.Owned = true;
+                }
+            }
+        }
+        //IF someone else OWNS THE SPACE - player has to PAY
         private static void OtherPlayerOwn(Player[] players, List<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
         {
             for (int i = 0; i < players.Length; i++)
@@ -119,7 +144,7 @@ namespace Monopoly.GameLogic
                 }
             }
         }
-
+        //THE ACTUAL PAYMENT is HERE
         private static void PayingMoney(Player player, int moneyToPay, Player otherPlayer)
         {
 
@@ -196,24 +221,7 @@ namespace Monopoly.GameLogic
             }
         }
 
-        private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PropertySpace currentPropertySpace)
-        {
-            Console.WriteLine("Player to decide - buy(1) OR pass(2)");
-            int decision = int.Parse(Console.ReadLine());
-            if (decision == 1)
-            {
-                if (player.Bankroll < currentPropertySpace.BuyingPrice)
-                {
-                    Console.WriteLine("Not Enough Money To Buy The Property");
-                }
-                else
-                {
-                    player.Bankroll = player.Bankroll - (int)currentPropertySpace.BuyingPrice;
-                    player.AddSpace(currentPropertySpace);
-                    currentPropertySpace.Owned = true;
-                }
-            }
-        }
+      
     }
 }
         

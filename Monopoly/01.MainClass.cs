@@ -99,7 +99,8 @@
 
             //Console.Write("First Dice : " + dices.FirstDiceValue + "    ");
             //Console.WriteLine("Second Dice : " + dices.SecondDiceValue);
-
+            
+            //GameLogic.GameManager.Game(players);
 
         }
     }
