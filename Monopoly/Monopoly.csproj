@@ -50,15 +50,15 @@
     <Compile Include="CardType.cs" />
     <Compile Include="ChanceCard.cs" />
     <Compile Include="Color.cs" />
-    <Compile Include="Dice.cs" />
+    <Compile Include="Dices.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="GoodLuckCard.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="IRotateble.cs" />
     <Compile Include="ISavable.cs" />
     <Compile Include="MoveCard.cs" />
+    <Compile Include="RandomGenerator.cs" />
     <Compile Include="SafeCard.cs" />
-    <Compile Include="SecondDice.cs" />
     <Compile Include="SpaceCard.cs" />
     <Compile Include="Street.cs" />
     <Compile Include="LuckySpace.cs" />

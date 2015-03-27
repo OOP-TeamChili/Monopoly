@@ -19,7 +19,7 @@
             Console.WindowWidth = Console.LargestWindowWidth - 4;
             ConsoleUtils.CenterConsole();
             //SplashScreen.splashScreen();
-           // SplashScreen.WellcomeScreen();
+            // SplashScreen.WellcomeScreen();
             #endregion Console and font resizing and intro screen
 
             //#region PlayersCount
@@ -87,32 +87,20 @@
             //}
             //#endregion playersInitializingplayer
 
-           
-            //Тук му подаваме кординати при инициализация на нов зар и печата рандом пъти рандом зар от заровете, вкарани в масив от матрици в класа зар. Печата ги един върху друг и използва Thread.Sleep за да се вижда добре и да не ги дава прекалено бързо. Заровете зарежда от папка Dices в Files и ги тъпче в матрици. 
 
-            // Има проблем, че когато се инициализира втори зар обаче се държи неадекватно и печата джиджуфляци
-            //Направил съм го с Multiple Threading за да се движат и въртят паралелно заровете и започна да ги чупи 
+            //After throwing the dices we can get their values by the properties FirstDiceValue and SecondDiceValue
+            Dices dices = new Dices(5, 0);
+            dices.ThrowDices();
 
-            //Първоначалното ми решение :
-            //Направих клас SecondDice и наследих Dice там, и първия път заработи коректно, а от втория опит пак се чупиха по същия начин с начупването. Направих тест с ReferenceEquals, и там изкара FALSE, което е супер, но не
-            //разбирам защо се чупи.
-            //После създадох метод в класа Зар, който прави дълбоко копиране на обекта и би трябвало да се държи
-            //като супер различен обект, но не. Сега зара си работи коректно, само че два НЕ могат да работят заедно.
-            
+            Console.Write("First Dice : " + dices.FirstDiceValue + "    ");
+            Console.WriteLine("Second Dice : " + dices.SecondDiceValue);
 
-            Dice firstDice = new Dice(10,5);
-            //SecondDice secondDice = new SecondDice(50, 25);
-            var thirdPoint = firstDice.Clone(20,30);
+            //dices.ThrowDices();
 
-            //firstDice.ShowDiceRotation();
-            Thread firstThread = new Thread(new ThreadStart(firstDice.ShowDiceRotation));
-            firstThread.Start();
-            //thirdPoint.ShowDiceRotation();
-            Thread secondThread = new Thread(new ThreadStart(thirdPoint.ShowDiceRotation));
-            //thirdPoint.ShowDiceRotation();
-            //firstThread.Start();
-             secondThread.Start();
-            
+            //Console.Write("First Dice : " + dices.FirstDiceValue + "    ");
+            //Console.WriteLine("Second Dice : " + dices.SecondDiceValue);
+
+
         }
     }
 }

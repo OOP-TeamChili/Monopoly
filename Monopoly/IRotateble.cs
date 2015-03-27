@@ -2,6 +2,6 @@
 {
     public interface IRotateble
     {
-        void ShowDiceRotation();
+        void ThrowDices();
     }
 }
