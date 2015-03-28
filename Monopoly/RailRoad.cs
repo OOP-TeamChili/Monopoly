@@ -7,5 +7,11 @@ namespace Monopoly
 {
     public class RailRoad:purchasableSpace
     {
+        public RailRoad(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent) :         
+            base(currentName, currentPrice, currentMortgageValue, currentRent)
+        {           
+        }       
+    
+
     }
 }

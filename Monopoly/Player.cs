@@ -40,7 +40,7 @@ namespace Monopoly
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.bankroll;
             }
             set
             {
@@ -63,7 +63,7 @@ namespace Monopoly
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.totalValue;
             }
             set
             {

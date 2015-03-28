@@ -7,5 +7,9 @@ namespace Monopoly
 {
     public class UtilitySpace:purchasableSpace
     {
+        public UtilitySpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent) :         
+            base(currentName, currentPrice, currentMortgageValue, currentRent)
+        {           
+        }  
     }
 }

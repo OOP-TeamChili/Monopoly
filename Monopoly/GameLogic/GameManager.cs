@@ -26,17 +26,15 @@ namespace Monopoly.GameLogic
             Console.Clear();
             int currentPlayerCounter = 0;          
   
-            //Whil LOOP for the game logic - it iterates over each player
+            //While LOOP for the game logic - it iterates over each player
             while (true)
             {
-                Dice dice1 = new Dice();
-                Dice dice2 = new Dice();
-                Random rand = new Random();                            
-                dice1.ValueDice = rand.Next(DiceMinValue, DiceMaxValue + 1);
-                dice2.ValueDice = rand.Next(DiceMinValue, DiceMaxValue + 1);
-                Console.WriteLine(dice1.ValueDice);
-                Console.WriteLine(dice2.ValueDice);
-                if (dice1.ValueDice == dice2.ValueDice)
+
+                Dices dices = new Dices(5, 0);
+                dices.ThrowDices();              
+                Console.WriteLine(dices.FirstDiceValue);
+                Console.WriteLine(dices.SecondDiceValue);
+                if (dices.FirstDiceValue == dices.SecondDiceValue)
                 {
                     pairs++;
                     if (pairs == 3)
@@ -46,7 +44,7 @@ namespace Monopoly.GameLogic
                 }
                 //Defining which player's turn is
                 var player = players[currentPlayerCounter];
-                player.Position = player.Position + dice1.ValueDice + dice2.ValueDice;
+                player.Position = player.Position + dices.FirstDiceValue + dices.SecondDiceValue;
                     ;                
                 if (player.Position > PositionsOnBoard - 1)
                 {
@@ -78,18 +76,17 @@ namespace Monopoly.GameLogic
                 //TODO:currentSpace is GoodLuckCard
                 //TODO:currentSpace is parking
                 //TODO:currentSpace is Jail/JustVisiting
-                if (dice1.ValueDice != dice2.ValueDice)
+                if (dices.FirstDiceValue != dices.SecondDiceValue)
                 {
                     currentPlayerCounter++;
                     if (currentPlayerCounter > players.Length - 1)
                     {
                         currentPlayerCounter = 0;
                     }
-                }             
-               
-
+                }   
             }
         }
+
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
         private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PropertySpace currentPropertySpace)
         {
@@ -109,6 +106,7 @@ namespace Monopoly.GameLogic
                 }
             }
         }
+
         //IF someone else OWNS THE SPACE - player has to PAY
         private static void OtherPlayerOwn(Player[] players, List<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
         {
