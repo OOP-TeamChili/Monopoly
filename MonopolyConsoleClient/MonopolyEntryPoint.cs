@@ -6,6 +6,7 @@
 
     using Monopoly;
     using Monopoly.GameLogic;
+    using Monopoly.Players;
 
     class MonopolyEntryPoint
     {

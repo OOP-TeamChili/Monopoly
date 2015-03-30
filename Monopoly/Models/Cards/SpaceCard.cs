@@ -1,6 +1,7 @@
 ﻿namespace Monopoly.Cards
 {
     using Monopoly.Interfaces;
+    using Monopoly.Players;
 
     public class SpaceCard : ChanceCard, ISavable
     {

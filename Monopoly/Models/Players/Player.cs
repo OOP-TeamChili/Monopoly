@@ -1,4 +1,4 @@
-﻿namespace Monopoly
+﻿namespace Monopoly.Players
 {
     using System;
     using System.Collections.Generic;

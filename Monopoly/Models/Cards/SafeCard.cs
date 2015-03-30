@@ -3,6 +3,7 @@
     using System;
 
     using Monopoly.Interfaces;
+    using Monopoly.Players;
 
     public class SafeCard : ChanceCard, ISavable //this class creates cards that can be kept by the player and are mainly discounts.
     {
