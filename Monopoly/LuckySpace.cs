@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-    public class LuckySpace: NotPurchasableSpace
+    public class LuckySpace : NotPurchasableSpace
     {
     }
 }

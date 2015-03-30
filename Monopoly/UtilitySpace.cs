@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Monopoly
 {
-    public class UtilitySpace:purchasableSpace
+    public class UtilitySpace:PurchasableSpace
     {
         public UtilitySpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent) :         
             base(currentName, currentPrice, currentMortgageValue, currentRent)

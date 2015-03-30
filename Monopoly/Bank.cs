@@ -7,7 +7,7 @@ namespace Monopoly
 {
     public class Bank : Element
     {
-        private List<purchasableSpace> purchasableSpaces = new List<purchasableSpace>();
+        private List<PurchasableSpace> purchasableSpaces = new List<PurchasableSpace>();
         private double money = 20580;  //initial amount of money in the bank
 
         public Bank()
@@ -29,15 +29,15 @@ namespace Monopoly
             this.money = money - bonus;
         }
 
-        public void AddSpace()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void AddSpace()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        public void RemoveSpace()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void RemoveSpace()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public void Auction(List<PropertySpace> properties, List<Player> players)
         {
@@ -71,32 +71,32 @@ namespace Monopoly
 
             string bidToString = "";
 
-            ConsoleKeyInfo info = Console.ReadKey(true);
-            while (info.Key != ConsoleKey.Enter)
-            {
-                if (info.Key != ConsoleKey.Backspace)
-                {
-                    Console.Write("*");
-                    password += info.KeyChar;
-                }
-                else if (info.Key == ConsoleKey.Backspace)
-                {
-                    if (!string.IsNullOrEmpty(password))
-                    {
-                        // remove one character from the list of password characters
-                        password = password.Substring(0, password.Length - 1);
-                        // get the location of the cursor
-                        int pos = Console.CursorLeft;
-                        // move the cursor to the left by one character
-                        Console.SetCursorPosition(pos - 1, Console.CursorTop);
-                        // replace it with space
-                        Console.Write(" ");
-                        // move the cursor to the left by one character again
-                        Console.SetCursorPosition(pos - 1, Console.CursorTop);
-                    }
-                }
-                info = Console.ReadKey(true);
-            }
+            //ConsoleKeyInfo info = Console.ReadKey(true);
+            //while (info.Key != ConsoleKey.Enter)
+            //{
+            //    if (info.Key != ConsoleKey.Backspace)
+            //    {
+            //        Console.Write("*");
+            //        password += info.KeyChar;
+            //    }
+            //    else if (info.Key == ConsoleKey.Backspace)
+            //    {
+            //        if (!string.IsNullOrEmpty(password))
+            //        {
+            //            // remove one character from the list of password characters
+            //            password = password.Substring(0, password.Length - 1);
+            //            // get the location of the cursor
+            //            int pos = Console.CursorLeft;
+            //            // move the cursor to the left by one character
+            //            Console.SetCursorPosition(pos - 1, Console.CursorTop);
+            //            // replace it with space
+            //            Console.Write(" ");
+            //            // move the cursor to the left by one character again
+            //            Console.SetCursorPosition(pos - 1, Console.CursorTop);
+            //        }
+            //    }
+            //    info = Console.ReadKey(true);
+            //}
 
             // add a new line because user pressed enter at the end of their password
             Console.WriteLine();

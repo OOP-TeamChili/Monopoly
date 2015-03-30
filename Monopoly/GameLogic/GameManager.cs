@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Monopoly.GameLogic
+﻿namespace Monopoly.GameLogic
 {
-    class GameManager
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Monopoly.Dices;
+
+    public class GameManager
     {
-        const int DiceMinValue = 1;
-        const int DiceMaxValue = 6;
-        const int PositionsOnBoard = 42;
-        const int CycleCash = 200;
+        private const int DiceMinValue = 1;
+        private const int DiceMaxValue = 6;
+        private const int PositionsOnBoard = 42;
+        private const int CycleCash = 200;
+
         public static void Game(Player[] players)
         {
             List<Space> listOfSpaces = new List<Space>();
@@ -23,6 +24,7 @@ namespace Monopoly.GameLogic
                 PropertySpace newProperty = new PropertySpace(propertyName, i * 10 + 2, i * 10 / 2 + 2, i + 5,i+200,i+250,i+300,i+350,i+500);
                 listOfSpaces.Add(newProperty);
             }
+
             Console.Clear();
             int currentPlayerCounter = 0;          
   
@@ -42,10 +44,11 @@ namespace Monopoly.GameLogic
                         //TO DO: player goes to prison
                     }
                 }
+
                 //Defining which player's turn is
                 var player = players[currentPlayerCounter];
                 player.Position = player.Position + dices.FirstDiceValue + dices.SecondDiceValue;
-                    ;                
+                                
                 if (player.Position > PositionsOnBoard - 1)
                 {
                     player.Position = player.Position - PositionsOnBoard;
@@ -142,6 +145,7 @@ namespace Monopoly.GameLogic
                 }
             }
         }
+
         //THE ACTUAL PAYMENT is HERE
         private static void PayingMoney(Player player, int moneyToPay, Player otherPlayer)
         {
@@ -163,6 +167,7 @@ namespace Monopoly.GameLogic
                         break;
                     }
                 }
+
                 if (decision == 1)
                 {
                     ShowPlayerProperties(player);
@@ -177,6 +182,7 @@ namespace Monopoly.GameLogic
                         {
                             mortgagePropertiesValue = mortgagePropertiesValue + (int)player.ListOfProperties[propertiesToMortgage[i]].MortgageValue;
                         }
+
                         if (player.Bankroll + mortgagePropertiesValue - moneyToPay >= 0)
                         {
                             for (int j = 0; j < propertiesToMortgage.Length; j++)
@@ -184,6 +190,7 @@ namespace Monopoly.GameLogic
                                 player.ListOfProperties[propertiesToMortgage[j]].Mortgaged = true;
                                 player.Bankroll = player.Bankroll + (int)player.ListOfProperties[propertiesToMortgage[j]].MortgageValue;
                             }
+
                             player.RemoveCash(moneyToPay);
                             otherPlayer.AddCash(moneyToPay);
                         }
@@ -218,8 +225,6 @@ namespace Monopoly.GameLogic
                 Console.WriteLine("-----------------");
             }
         }
-
-      
     }
 }
         

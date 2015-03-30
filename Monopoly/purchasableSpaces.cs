@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-   public abstract class purchasableSpace:Space
+    using System;
+
+    public abstract class PurchasableSpace : Space
     {
-       private const decimal MinPropertyPrice = 1;
+        private const decimal MinPropertyPrice = 1;
         private const decimal MinMortgageValue = 1;
         private const decimal MinRentPrice = 1;
 
@@ -20,7 +17,7 @@ namespace Monopoly
         private bool owned;
 
         //the idea is - all prices to be created when the object is created, as everything like price, name and etc is given in the beginning of the game.
-        public purchasableSpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent)
+        public PurchasableSpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent)
         {
             this.Name = currentName;
             this.BuyingPrice = currentPrice;
@@ -32,6 +29,7 @@ namespace Monopoly
         }
 
         //the set of Name and prices will be private because the values cannot change in the game. 
+        //TODO: Move implementation of the Name property to super class Space
         public string Name
         {
             get

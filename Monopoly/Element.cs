@@ -7,7 +7,7 @@ namespace Monopoly
 {
     public abstract class Element
     {
-        private List<purchasableSpace> ownedSpaces = new List<purchasableSpace>();
+        private List<PurchasableSpace> ownedSpaces = new List<PurchasableSpace>();
 
         public void AddSpace()
         {

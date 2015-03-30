@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-    class RandomGenerator
+    using System;
+
+    internal class RandomGenerator
     {
 
         private Random Rand { get; set; }

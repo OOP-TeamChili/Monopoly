@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-    public class Player:Element
+    using System;
+    using System.Collections.Generic;
+
+    using Monopoly.Cards;
+    using Monopoly.Interfaces;
+
+    public class Player : Element
     {
         //this is forchecking the turns 
         bool IsGameOver;
@@ -18,7 +19,7 @@ namespace Monopoly
         private List<ISavable> cards;
         
         private int position;
-        private List<purchasableSpace> listOfProperties;
+        private List<PurchasableSpace> listOfProperties;
       
 
         public Player()
@@ -33,7 +34,7 @@ namespace Monopoly
             this.cards = new List<ISavable>();
             this.Position = startPos;
             this.Bankroll = startBankroll;
-            this.listOfProperties = new List<purchasableSpace>();
+            this.listOfProperties = new List<PurchasableSpace>();
         }
 
         public int Bankroll
@@ -78,11 +79,11 @@ namespace Monopoly
             }
         }
 
-        public List<purchasableSpace> ListOfProperties
+        public List<PurchasableSpace> ListOfProperties
         {
             get
             {
-                return new List<purchasableSpace>(this.listOfProperties);
+                return new List<PurchasableSpace>(this.listOfProperties);
             }
         }
         //TODO: token 
@@ -126,7 +127,7 @@ namespace Monopoly
             this.Bankroll = this.Bankroll + moneyToAdd;
         }
 
-        public void AddSpace(purchasableSpace  boughtProperty)
+        public void AddSpace(PurchasableSpace  boughtProperty)
         {
             listOfProperties.Add(boughtProperty);
         }

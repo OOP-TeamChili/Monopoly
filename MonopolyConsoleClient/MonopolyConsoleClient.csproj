@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1A13ED8-0829-4BBF-A919-97CCBE76B42C}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{3E9CCFC5-E759-4F7B-A663-7AF37A4E3AB4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MonopolyConsoleClient</RootNamespace>
-    <AssemblyName>Monopoly</AssemblyName>
+    <AssemblyName>MonopolyConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -47,42 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Cards\BadLuckCard.cs" />
-    <Compile Include="Bank.cs" />
-    <Compile Include="BuildingType.cs" />
-    <Compile Include="Models\Cards\CardType.cs" />
-    <Compile Include="Models\Cards\ChanceCard.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="Models\Dices\Dices.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="GameLogic\GameManager.cs" />
-    <Compile Include="Models\Cards\GoodLuckCard.cs" />
-    <Compile Include="Building.cs" />
-    <Compile Include="Interfaces\IRotateble.cs" />
-    <Compile Include="Interfaces\ISavable.cs" />
-    <Compile Include="Models\Cards\MoveCard.cs" />
-    <Compile Include="RandomGenerator.cs" />
-    <Compile Include="Models\Cards\SafeCard.cs" />
-    <Compile Include="Models\Cards\SpaceCard.cs" />
-    <Compile Include="Street.cs" />
-    <Compile Include="LuckySpace.cs" />
-    <Compile Include="NotPurchasableSpace.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PrisonSpace.cs" />
+    <Compile Include="MonopolyEntryPoint.cs" />
+    <Compile Include="ConsoleFont.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property.cs" />
-    <Compile Include="PropertySpace.cs" />
-    <Compile Include="PurchasableSpaces.cs" />
-    <Compile Include="RailRoad.cs" />
-    <Compile Include="Space.cs" />
-    <Compile Include="StartSpace.cs" />
-    <Compile Include="UtilitySpace.cs" />
+    <Compile Include="SetWindowPosition.cs" />
+    <Compile Include="SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Monopoly\Monopoly.csproj">
+      <Project>{b1a13ed8-0829-4bbf-a919-97ccbe76b42c}</Project>
+      <Name>Monopoly</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
