@@ -12,7 +12,7 @@
 
         private int discountInPercent;
 
-        public SafeCard(int currentDiscount)
+        public SafeCard(string currentDescription, CardType type, int currentDiscount) : base(currentDescription, type)
         {
             this.discountInPercent = currentDiscount;
             this.Cash = this.Cash * (this.DiscountInPercent / 100);
@@ -37,7 +37,7 @@
 
         public void AddToPlayer(Player player)
         {
-            player.KeepCard(new SafeCard((int)this.Cash));
+            player.KeepCard(new SafeCard(this.Description, this.CardType, (int)this.Cash));
         }
     }
 }

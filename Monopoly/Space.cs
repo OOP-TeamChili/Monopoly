@@ -2,7 +2,7 @@
 {
     using System;
 
-    public abstract class Space
+    public class Space
     {
         private int name;
 

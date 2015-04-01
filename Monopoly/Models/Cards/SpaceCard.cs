@@ -3,20 +3,19 @@
     using Monopoly.Interfaces;
     using Monopoly.Players;
 
-    public class SpaceCard : ChanceCard, ISavable
+    internal class SpaceCard : ChanceCard, ISavable
     {
         private Space spaceToGo;
 
         //constructor for a card that takes the player to specific space.
-        //this consutrcor can be used for GetOutOfJail free card. No separate class as it is only 1 of a kind.
-        public SpaceCard(Space space)
+        public SpaceCard(string currentDescription, Space space, CardType type) : base(currentDescription, type)
         {
             this.SpaceToGo = space;
         }
 
         //constructor for a card that takes the player to a space and the player pays or get paid.
-        public SpaceCard(Space space, CardType type, decimal howMuch)
-            : base(type, howMuch)
+        public SpaceCard(string currentDescription, Space space, CardType type, decimal howMuch)
+            : base(currentDescription, type, howMuch)
         {
             this.spaceToGo = space;
         }
@@ -35,7 +34,7 @@
 
         public void AddToPlayer(Player player)
         {
-            player.KeepCard(new SpaceCard(this.SpaceToGo));
+            player.KeepCard(new SpaceCard(this.Description, this.SpaceToGo, this.CardType));
         }
     }
 }

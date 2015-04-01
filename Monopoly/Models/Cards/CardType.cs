@@ -3,6 +3,7 @@
     public enum CardType
     {
         LuckyCard,
-        BadLuckCard
+        BadLuckCard,
+        Neutral
     }
 }

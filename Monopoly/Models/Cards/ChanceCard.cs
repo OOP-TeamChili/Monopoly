@@ -1,26 +1,46 @@
 ﻿namespace Monopoly.Cards
 {
     using System;
-    public abstract class ChanceCard
+    public class ChanceCard
     {
         private const decimal MinCash = 0;
+        private const int MinDescLen = 1;
 
+        private string description;
         private decimal cash;
         private CardType cardType;
 
-        public ChanceCard()
+        public ChanceCard(string currentDescription, CardType type)
         {
-
+            this.Description = currentDescription;
+            this.CardType = type;
         }
 
         //constructor for cards that will pay the player or will make him/her pay.
-        public ChanceCard(CardType type, decimal howMuch)
+        public ChanceCard(string currentDescription, CardType type, decimal howMuch)
         {
+            this.Description = currentDescription;
             this.Cash = howMuch;
             this.CardType = type;
         }
 
-              
+
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+            private set
+            {
+                if (value.Length < MinDescLen)
+                {
+                    throw new ArgumentException("Card description length lower than {0}", MinDescLen.ToString());
+                }
+
+                this.description = value;
+            }
+        }
 
         public decimal Cash
         {

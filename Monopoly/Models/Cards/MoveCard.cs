@@ -5,21 +5,22 @@
     {
         private const int MinSquaresToMove = 0;
         //private const int MaxSquaresToMove = Max element of the field. - Add it please :)
-        
+
         private int squaresToMove;
 
         //Constructor for card that will only move player
-        public MoveCard(int moveSquares)
+        public MoveCard(string currentDescription, CardType type, int moveSquares)
+            : base(currentDescription, type)
         {
             this.SquaresToMove = moveSquares;
         }
 
         //constructor for cards that will move the player and money will be exchanged.
-        public MoveCard(int moveSquares, CardType type, decimal howMuch)
-            : base(type, howMuch)
+        public MoveCard(string currentDescription, int moveSquares, CardType type, decimal howMuch)
+            : base(currentDescription, type, howMuch)
         {
             this.SquaresToMove = moveSquares;
-        }  
+        }
 
         public int SquaresToMove
         {

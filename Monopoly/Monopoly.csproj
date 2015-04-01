@@ -51,6 +51,8 @@
     <Compile Include="Models\Cards\BadLuckCard.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BuildingType.cs" />
+    <Compile Include="Models\Cards\CardInitializer.cs" />
+    <Compile Include="Models\Cards\CardRandomizer.cs" />
     <Compile Include="Models\Cards\CardType.cs" />
     <Compile Include="Models\Cards\ChanceCard.cs" />
     <Compile Include="Color.cs" />

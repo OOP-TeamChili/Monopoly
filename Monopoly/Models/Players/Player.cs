@@ -143,5 +143,12 @@
             
             
         }
+
+        public ChanceCard DrawCard(Queue<ChanceCard> listOfCards)
+        {
+            ChanceCard cardDrawn = listOfCards.Dequeue();
+            listOfCards.Enqueue(cardDrawn);
+            return cardDrawn;
+        }
     }
 }

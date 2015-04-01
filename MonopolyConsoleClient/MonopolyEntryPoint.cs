@@ -5,8 +5,10 @@
     using System.IO;
 
     using Monopoly;
+    using Monopoly.Cards;
     using Monopoly.GameLogic;
     using Monopoly.Players;
+
 
     class MonopolyEntryPoint
     {
@@ -102,8 +104,10 @@
 
             //Console.Write("First Dice : " + dices.FirstDiceValue + "    ");
             //Console.WriteLine("Second Dice : " + dices.SecondDiceValue);
-            
+            //var asd = CardInitializer.InitializeQueue();
             GameManager.Game(players);
+            var ChanceListCards = CardInitializer.InitializeChanceList();
+            var CommunityListCards = CardInitializer.InitializeCommunityList();
         }
     }
 }
