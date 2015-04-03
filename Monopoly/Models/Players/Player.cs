@@ -20,6 +20,8 @@
         
         private int position;
         private List<PurchasableSpace> listOfProperties;
+        public int OwnedStations { get; set; }
+        public int OwnedUtilities { get; set; }
       
 
         public Player()
@@ -27,13 +29,15 @@
             throw new NotImplementedException();
         }
 
-        public Player(int playerNumber, string playerName, int startPos = 0, int startBankroll = 1500)
+        public Player(int playerNumber, string playerName, int startPos = 0, int startBankroll = 1500,int ownedStations=0,int ownedUtilities=0)
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
             this.cards = new List<ISavable>();
             this.Position = startPos;
             this.Bankroll = startBankroll;
+            this.OwnedStations = ownedStations;
+            this.OwnedUtilities = ownedStations;
             this.listOfProperties = new List<PurchasableSpace>();
         }
 

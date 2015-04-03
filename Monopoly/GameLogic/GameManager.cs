@@ -22,8 +22,19 @@
             for (int i = 0; i < 42; i++)
             {
                 string propertyName = "Property" + i;
-                PropertySpace newProperty = new PropertySpace(propertyName, i * 10 + 2, i * 10 / 2 + 2, i + 5,i+200,i+250,i+300,i+350,i+500);
-                listOfSpaces.Add(newProperty);
+                if (i > 12)
+                {
+                    PropertySpace newProperty = new PropertySpace(propertyName, i * 10 + 2, i * 10 / 2 + 2, i + 5, i + 200, i + 250, i + 300, i + 350, i + 500);
+
+                    listOfSpaces.Add(newProperty);
+                }
+                else
+                {
+                    RailRoad  newRailRoad= new RailRoad(propertyName, 300 + i, 200 + i, 25);
+                    listOfSpaces.Add(newRailRoad);
+                }
+
+                
             }
 
             Console.Clear();
@@ -34,9 +45,13 @@
             {
 
                 Dices dices = new Dices(5, 0);
-                dices.ThrowDices();              
-                Console.WriteLine(dices.FirstDiceValue);
-                Console.WriteLine(dices.SecondDiceValue);
+                dices.ThrowDices();         
+                //dices.FirstDiceValue = 2;
+                //dices.SecondDiceValue = 1;
+                //Console.WriteLine(dices.FirstDiceValue);
+                //Console.WriteLine(dices.SecondDiceValue);
+                
+                
                 if (dices.FirstDiceValue == dices.SecondDiceValue)
                 {
                     pairs++;
@@ -72,9 +87,42 @@
                         OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
                     }
                 }
-                //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE
-                //TODO:currentSpace is Utility
-                //TODO:currentSpace is RailRoad
+                if (currentSpace is UtilitySpace)
+                {
+                    UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
+                    if (currentUtilitySpace.Owned == false)
+                    {
+                        FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentUtilitySpace);
+                        player.OwnedUtilities = currentUtilitySpace.Owned == true ? 
+                            player.OwnedUtilities+1 :
+                            player.OwnedUtilities;
+                    }
+                    else if (currentUtilitySpace.Owned == true &&
+                      !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                    {
+                        OtherPlayerOwnUtility(players, listOfSpaces, player, currentUtilitySpace);
+                    }
+                }
+
+                if (currentSpace is RailRoad)
+                {
+                    RailRoad currentRailroadSpace = (RailRoad)currentSpace;
+                    if (currentRailroadSpace.Owned == false)
+                    {
+                        FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentRailroadSpace);
+                        player.OwnedStations = currentRailroadSpace.Owned == true ?
+                            player.OwnedStations + 1 :
+                            player.OwnedStations;
+                    }
+                    else if (currentRailroadSpace.Owned == true &&
+                      !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                    {
+                        OtherPlayerOwnRailRoad(players, listOfSpaces, player, currentRailroadSpace);
+                    }
+                }
+
+                //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE     
+                
                 //TODO:currentSpace is BadLuckCard
                 //TODO:currentSpace is LuckySpace
                 //TODO:currentSpace is GoodLuckCard
@@ -91,8 +139,32 @@
             }
         }
 
+        private static void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                var otherPlayer = players[i];
+                if (otherPlayer.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                {
+                    PayingMoney(player, (int)currentUtilitySpace.Rent*otherPlayer.OwnedUtilities, otherPlayer);
+                }
+            }
+        }
+
+        private static void OtherPlayerOwnRailRoad(Player[] players, List<Space> listOfSpaces, Player player, RailRoad currentRailRoadSpace)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                var otherPlayer = players[i];
+                if (otherPlayer.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                {
+                    PayingMoney(player, (int)currentRailRoadSpace.Rent * otherPlayer.OwnedStations, otherPlayer);
+                }
+            }
+        }
+
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
-        private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PropertySpace currentPropertySpace)
+        private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
             Console.WriteLine("Player to decide - buy(1) OR pass(2)");
             int decision = int.Parse(Console.ReadLine());
