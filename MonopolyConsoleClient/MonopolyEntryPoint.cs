@@ -7,8 +7,9 @@
     using Monopoly;
     using Monopoly.Cards;
     using Monopoly.GameLogic;
+    using Monopoly.Interfaces;
     using Monopoly.Players;
-
+    using MonopolyConsoleClient.DrawEngine;
 
     class MonopolyEntryPoint
     {
@@ -105,7 +106,9 @@
             //Console.Write("First Dice : " + dices.FirstDiceValue + "    ");
             //Console.WriteLine("Second Dice : " + dices.SecondDiceValue);
             //var asd = CardInitializer.InitializeQueue();
-            GameManager.Game(players);
+            IDrawingEngine drawEngine = new ConsoleDrawEngine();
+            GameManager manager = GameManager.GetInstance(drawEngine);
+            manager.Game(players);
             var ChanceListCards = CardInitializer.InitializeChanceList();
             var CommunityListCards = CardInitializer.InitializeCommunityList();
         }

@@ -1,129 +1,231 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Monopoly.MainClass" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="Monopoly.Bank" Collapsed="true">
+    <Position X="8.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>01.MainClass.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.Player">
-    <Position X="2.25" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAACAACABABAAAAEABgAAEQIAQBCAAAAAAAAAASBAAA=</HashCode>
-      <FileName>Player.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.Dice">
-    <Position X="0.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAIAAAAAAAAAAAAAAAAAAQAACAAAAAASgAEAAABA=</HashCode>
-      <FileName>Dice.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Monopoly.Bank">
-    <Position X="4.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAABAAAAAAAACAAAAAAAAAAEAAAABAAA=</HashCode>
+      <HashCode>AABAIAAAAAAAAABEAAAACAAAAAAAgAAAIAEAAAAgEAA=</HashCode>
       <FileName>Bank.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.Element">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="Monopoly.Building" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAABAAAAAAAAAAAAAAEAAABAAAAAQAAAAAAgAA=</HashCode>
+      <FileName>Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Element" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAQAAAAAAAABAAA=</HashCode>
       <FileName>Element.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.Space">
-    <Position X="7.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAABAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Space.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.purchasableSpace">
-    <Position X="9.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAJAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>purchasableSpaces.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.NotPurchasableSpace">
-    <Position X="7.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>NotPurchasableSpace.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.StartSpace">
-    <Position X="6.25" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>StartSpace.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.PrisonSpace">
-    <Position X="8" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PrisonSpace.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Monopoly.LuckySpace">
-    <Position X="10" Y="5.25" Width="1.5" />
+  <Class Name="Monopoly.LuckySpace" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>LuckySpace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.BadLuckSpace">
-    <Position X="11" Y="7" Width="1.5" />
+  <Class Name="Monopoly.NotPurchasableSpace" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BadLuckCard.cs</FileName>
+      <FileName>NotPurchasableSpace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.GoodLuckSpace">
-    <Position X="8.75" Y="7" Width="1.5" />
+  <Class Name="Monopoly.PrisonSpace" Collapsed="true">
+    <Position X="1" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GoodLuckCard.cs</FileName>
+      <FileName>PrisonSpace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.PropertySpace">
-    <Position X="13.25" Y="1.75" Width="1.5" />
+  <Class Name="Monopoly.Property" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAAAAAAQAIAQkACAEAgAAACAAIAQEACA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.PropertySpace" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAIAAAACAAgBAQAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>PropertySpace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.RailRoad">
-    <Position X="13.5" Y="3.25" Width="1.5" />
+  <Class Name="Monopoly.PurchasableSpace" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAQAIAQkACAEAgAAACAAIAQEACA=</HashCode>
+      <FileName>PurchasableSpaces.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.RailRoad" Collapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RailRoad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.UtilitySpace">
-    <Position X="11" Y="3.5" Width="1.5" />
+  <Class Name="Monopoly.RandomGenerator" Collapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RandomGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Space" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Space.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.StartSpace" Collapsed="true">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StartSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Street" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAAAAAAAAAAAEAEAAgACAAIAAgAAAAQA=</HashCode>
+      <FileName>Street.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.UtilitySpace" Collapsed="true">
+    <Position X="12.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UtilitySpace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.ConsoleHelper" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
-    <TypeIdentifier />
+  <Class Name="Monopoly.GameLogic.GameManager" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KQAEAEAAAAAABAAABAAAAIAABAhAAAAIgAAAACAAAQA=</HashCode>
+      <FileName>GameLogic\GameManager.cs</FileName>
+    </TypeIdentifier>
   </Class>
-  <Class Name="Monopoly.ConsoleUtils" Collapsed="true">
-    <Position X="0.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier />
+  <Class Name="Monopoly.Cards.BadLuckSpace" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\BadLuckCard.cs</FileName>
+    </TypeIdentifier>
   </Class>
-  <Struct Name="Monopoly.ConsoleFont" Collapsed="true">
-    <Position X="0.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier />
-  </Struct>
+  <Class Name="Monopoly.Cards.CardInitializer" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAQAAAAAAAAAAAAAAAAAAAQACAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\CardInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Cards.CardRandomizer" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Models\Cards\CardRandomizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Cards.ChanceCard" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABQAAAQkAAAAIAAACAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\ChanceCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Cards.GoodLuckSpace" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\GoodLuckCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Cards.MoveCard" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\MoveCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monopoly.Cards.SafeCard" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAQAAAAIIAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\Cards\SafeCard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Monopoly.Cards.SpaceCard" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\Cards\SpaceCard.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Monopoly.Dices.Dices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAmAAEEAQAACAQAAAgQAAAAAAAE=</HashCode>
+      <FileName>Models\Dices\Dices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Monopoly.Players.Player" Collapsed="true">
+    <Position X="10.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAACABABAAAIkABggIEQIEQBCCAAAAAAAAISBAAA=</HashCode>
+      <FileName>Models\Players\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Monopoly.Interfaces.IDrawingEngine" Collapsed="true">
+    <Position X="17" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IDrawingEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Monopoly.Interfaces.IRotateble" Collapsed="true">
+    <Position X="18.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRotateble.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Monopoly.Interfaces.ISavable" Collapsed="true">
+    <Position X="20.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Interfaces\ISavable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Monopoly.BuildingType" Collapsed="true">
+    <Position X="17" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>BuildingType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Monopoly.Color" Collapsed="true">
+    <Position X="20.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAIhAAAAAABAAAAAAAAAQAAAAAADAAAAA=</HashCode>
+      <FileName>Color.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Monopoly.Cards.CardType" Collapsed="true">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAABAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Cards\CardType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

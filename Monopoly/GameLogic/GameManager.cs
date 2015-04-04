@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Monopoly.Interfaces;
     using Monopoly.Dices;
     using Monopoly.Players;
 
@@ -13,8 +14,43 @@
         private const int DiceMaxValue = 6;
         private const int PositionsOnBoard = 42;
         private const int CycleCash = 200;
+        private static GameManager instance;
+        private IDrawingEngine drawEngine;
 
-        public static void Game(Player[] players)
+        private GameManager(IDrawingEngine drawEngine)
+        {
+            this.DrawEngine = drawEngine;
+        }
+        
+        public static GameManager GetInstance(IDrawingEngine drawEngine)
+        {
+            if (GameManager.instance == null)
+            {
+                GameManager.instance = new GameManager(drawEngine);
+            }
+
+            return GameManager.instance;
+        }
+
+        public IDrawingEngine DrawEngine 
+        {
+            get
+            {
+                return this.drawEngine;
+            }
+
+            private set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("An implementation of the IDrawEngine class must be provided.");
+                }
+
+                this.drawEngine = value;
+            }
+        }
+
+        public void Game(Player[] players)
         {
             List<Space> listOfSpaces = new List<Space>();
             int pairs = 0;
@@ -33,11 +69,9 @@
                     RailRoad  newRailRoad= new RailRoad(propertyName, 300 + i, 200 + i, 25);
                     listOfSpaces.Add(newRailRoad);
                 }
-
-                
             }
 
-            Console.Clear();
+            this.DrawEngine.ClearScreen();
             int currentPlayerCounter = 0;          
   
             //While LOOP for the game logic - it iterates over each player
@@ -45,9 +79,10 @@
             {
 
                 Dices dices = new Dices(5, 0);
-                dices.ThrowDices();         
+                dices.Rotate();
                 //dices.FirstDiceValue = 2;
                 //dices.SecondDiceValue = 1;
+                this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //Console.WriteLine(dices.FirstDiceValue);
                 //Console.WriteLine(dices.SecondDiceValue);
                 
@@ -139,7 +174,7 @@
             }
         }
 
-        private static void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
+        private void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -151,7 +186,7 @@
             }
         }
 
-        private static void OtherPlayerOwnRailRoad(Player[] players, List<Space> listOfSpaces, Player player, RailRoad currentRailRoadSpace)
+        private void OtherPlayerOwnRailRoad(Player[] players, List<Space> listOfSpaces, Player player, RailRoad currentRailRoadSpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -164,15 +199,15 @@
         }
 
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
-        private static void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
+        private void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
-            Console.WriteLine("Player to decide - buy(1) OR pass(2)");
+            this.DrawEngine.DrawText(0, 0, "Player to decide - buy(1) OR pass(2)");
             int decision = int.Parse(Console.ReadLine());
             if (decision == 1)
             {
                 if (player.Bankroll < currentPropertySpace.BuyingPrice)
                 {
-                    Console.WriteLine("Not Enough Money To Buy The Property");
+                    this.DrawEngine.DrawText(0, 1, "Not Enough Money To Buy The Property");
                 }
                 else
                 {
@@ -184,7 +219,7 @@
         }
 
         //IF someone else OWNS THE SPACE - player has to PAY
-        private static void OtherPlayerOwn(Player[] players, List<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
+        private void OtherPlayerOwn(Player[] players, List<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -220,7 +255,7 @@
         }
 
         //THE ACTUAL PAYMENT is HERE
-        private static void PayingMoney(Player player, int moneyToPay, Player otherPlayer)
+        private void PayingMoney(Player player, int moneyToPay, Player otherPlayer)
         {
 
             if (player.Bankroll - moneyToPay < 0)
@@ -287,7 +322,7 @@
             
         }
 
-        private static void ShowPlayerProperties(Player player)
+        private void ShowPlayerProperties(Player player)
         {
             for (int i = 0; i < player.ListOfProperties.Count; i++)
             {
