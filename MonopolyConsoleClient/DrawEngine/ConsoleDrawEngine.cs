@@ -1,10 +1,10 @@
 ﻿namespace MonopolyConsoleClient.DrawEngine
 {
     using System;
+    using System.Threading;
 
     using Monopoly.Interfaces;
     using Monopoly.Players;
-    using System.Threading;
 
     internal class ConsoleDrawEngine : IDrawingEngine
     {
@@ -67,6 +67,7 @@
                     {
                         Console.Write(dices[secondValue][row, col]);
                     }
+
                     secondDiceCursorCol++;
                     cursorRow++;
                     Console.SetCursorPosition(cursorCol, cursorRow);
@@ -76,6 +77,7 @@
                 secondDiceCursorCol = secondDiceDefaultCol;
 
                 Thread.Sleep(930);
+                this.ClearScreen();
             }
 
             Console.WriteLine();
