@@ -3,38 +3,41 @@
     using Monopoly.Interfaces;
     using Monopoly.Players;
 
-    internal class SpaceCard : ChanceCard, ISavable
+    public class SpaceCard : ChanceCard, ISavable
     {
-        private Space spaceToGo;
+        private int positionToGo;
 
         //constructor for a card that takes the player to specific space.
-        public SpaceCard(string currentDescription, Space space, CardType type) : base(currentDescription, type)
+        public SpaceCard(string currentDescription, int positionToGo,CardType type) : base(currentDescription, type)
         {
-            this.SpaceToGo = space;
+            this.PositionToGo = positionToGo;
         }
 
         //constructor for a card that takes the player to a space and the player pays or get paid.
-        public SpaceCard(string currentDescription, Space space, CardType type, decimal howMuch)
-            : base(currentDescription, type, howMuch)
-        {
-            this.spaceToGo = space;
-        }
+       // public SpaceCard(string currentDescription, int positionToGo, CardType type, decimal howMuch)
+       //     : base(currentDescription, type, howMuch)
+       // {
+       //     this.PositionToGo = positionToGo;
+       // }
 
-        public Space SpaceToGo
+        public int PositionToGo
         {
             get
             {
-                return this.spaceToGo;
+                return this.positionToGo;
             }
             private set
             {
-                this.spaceToGo = value;
+                this.positionToGo = value;
             }
         }
 
         public void AddToPlayer(Player player)
         {
-            player.KeepCard(new SpaceCard(this.Description, this.SpaceToGo, this.CardType));
+            //TODO: check why this is added
+            //player.KeepCard(new SpaceCard(this.Description, this.positionToGo, this.CardType));
         }
+
+       
     }
 }

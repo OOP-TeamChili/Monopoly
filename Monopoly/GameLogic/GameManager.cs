@@ -7,6 +7,7 @@
     using Monopoly.Interfaces;
     using Monopoly.Dices;
     using Monopoly.Players;
+    using Monopoly.Cards;
 
     public class GameManager
     {
@@ -53,22 +54,28 @@
         public void Game(Player[] players)
         {
             List<Space> listOfSpaces = new List<Space>();
+            
+            ChanceSpace ChanceSpaceObject=new ChanceSpace();
+           
+            listOfSpaces.Add(ChanceSpaceObject);
+            listOfSpaces.Add(ChanceSpaceObject);
+            listOfSpaces.Add(ChanceSpaceObject);
+            listOfSpaces.Add(ChanceSpaceObject);
+            listOfSpaces.Add(ChanceSpaceObject);
+            listOfSpaces.Add(ChanceSpaceObject);
+
+            
             int pairs = 0;
             //PROPERTIES JUST FOR EXAMPLE
             for (int i = 0; i < 42; i++)
             {
                 string propertyName = "Property" + i;
-                if (i > 12)
+                if (i > 6)
                 {
                     PropertySpace newProperty = new PropertySpace(propertyName, i * 10 + 2, i * 10 / 2 + 2, i + 5, i + 200, i + 250, i + 300, i + 350, i + 500);
 
                     listOfSpaces.Add(newProperty);
-                }
-                else
-                {
-                    RailRoad  newRailRoad= new RailRoad(propertyName, 300 + i, 200 + i, 25);
-                    listOfSpaces.Add(newRailRoad);
-                }
+                }               
             }
 
             this.DrawEngine.ClearScreen();
@@ -77,15 +84,13 @@
             //While LOOP for the game logic - it iterates over each player
             while (true)
             {
-
                 Dices dices = new Dices(5, 0);
-                dices.Rotate();
-                //dices.FirstDiceValue = 2;
-                //dices.SecondDiceValue = 1;
-                this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
+                //dices.Rotate();
+                dices.FirstDiceValue = 2;
+                dices.SecondDiceValue = 1;
+                //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //Console.WriteLine(dices.FirstDiceValue);
-                //Console.WriteLine(dices.SecondDiceValue);
-                
+                //Console.WriteLine(dices.SecondDiceValue); 
                 
                 if (dices.FirstDiceValue == dices.SecondDiceValue)
                 {
@@ -107,54 +112,8 @@
                 }
                 //Definig where this player is
                 var currentSpace = listOfSpaces[player.Position];
-                
-                //Case if the Player stepped on a property space
-                if (currentSpace is PropertySpace)
-                {
-                    PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
-                    if (currentPropertySpace.Owned == false)
-                    {
-                        FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentPropertySpace);
-                    }
-                    else if (currentPropertySpace.Owned == true &&
-                        !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
-                    {
-                        OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
-                    }
-                }
-                if (currentSpace is UtilitySpace)
-                {
-                    UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
-                    if (currentUtilitySpace.Owned == false)
-                    {
-                        FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentUtilitySpace);
-                        player.OwnedUtilities = currentUtilitySpace.Owned == true ? 
-                            player.OwnedUtilities+1 :
-                            player.OwnedUtilities;
-                    }
-                    else if (currentUtilitySpace.Owned == true &&
-                      !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
-                    {
-                        OtherPlayerOwnUtility(players, listOfSpaces, player, currentUtilitySpace);
-                    }
-                }
 
-                if (currentSpace is RailRoad)
-                {
-                    RailRoad currentRailroadSpace = (RailRoad)currentSpace;
-                    if (currentRailroadSpace.Owned == false)
-                    {
-                        FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentRailroadSpace);
-                        player.OwnedStations = currentRailroadSpace.Owned == true ?
-                            player.OwnedStations + 1 :
-                            player.OwnedStations;
-                    }
-                    else if (currentRailroadSpace.Owned == true &&
-                      !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
-                    {
-                        OtherPlayerOwnRailRoad(players, listOfSpaces, player, currentRailroadSpace);
-                    }
-                }
+                CheckSpaces(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
 
                 //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE     
                 
@@ -172,6 +131,91 @@
                     }
                 }   
             }
+        }
+
+        private void CheckSpaces(Player[] players, List<Space> listOfSpaces, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
+        {
+            //Case if the Player stepped on a property space
+            if (currentSpace is PropertySpace)
+            {
+                SteppedOnPropertySpace(players, listOfSpaces, currentPlayerCounter, player, currentSpace);
+            }
+            //Case if the Player stepped on a Utility space
+            if (currentSpace is UtilitySpace)
+            {
+                SteppedOnUtilitySpace(players, listOfSpaces, currentPlayerCounter, player, currentSpace);
+            }
+            //Case if the Player stepped on a RailRoad space
+            if (currentSpace is RailRoad)
+            {
+            SteppedOnRailRoadSpace(players, listOfSpaces, currentPlayerCounter, player, currentSpace);
+            }
+            //Case if the Player stepped on a Chance space
+            if (currentSpace is ChanceSpace)
+            {
+                SteppedOnChanceSpace(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+        }
+
+        private void SteppedOnChanceSpace(Player[] players, List<Space> listOfSpaces, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
+        {
+            ChanceCard drawChanceCard = ChanceSpaceObject.ChanceCardPull();
+            if (drawChanceCard is SpaceCard)
+            {
+                SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;
+                player.Position = drawChanceCardAsSpaceCard.PositionToGo;
+                currentSpace = listOfSpaces[player.Position];
+                CheckSpaces(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+        }
+
+        private void SteppedOnRailRoadSpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        {
+            RailRoad currentRailroadSpace = (RailRoad)currentSpace;
+            if (currentRailroadSpace.Owned == false)
+            {
+                FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentRailroadSpace);
+                player.OwnedStations = currentRailroadSpace.Owned == true ?
+                    player.OwnedStations + 1 :
+                    player.OwnedStations;
+            }
+            else if (currentRailroadSpace.Owned == true &&
+              !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+            {
+                OtherPlayerOwnRailRoad(players, listOfSpaces, player, currentRailroadSpace);
+            }
+        }
+
+        private void SteppedOnUtilitySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        {           
+                UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
+                if (currentUtilitySpace.Owned == false)
+                {
+                    FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentUtilitySpace);
+                    player.OwnedUtilities = currentUtilitySpace.Owned == true ?
+                        player.OwnedUtilities + 1 :
+                        player.OwnedUtilities;
+                }
+                else if (currentUtilitySpace.Owned == true &&
+                  !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                {
+                    OtherPlayerOwnUtility(players, listOfSpaces, player, currentUtilitySpace);
+                }           
+        }
+
+        private void SteppedOnPropertySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        {          
+                PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
+                if (currentPropertySpace.Owned == false)
+                {
+                    FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentPropertySpace);
+                }
+                else if (currentPropertySpace.Owned == true &&
+                    !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+                {
+                    OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
+                }
+            
         }
 
         private void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)

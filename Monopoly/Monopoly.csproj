@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChanceSpace.cs" />
     <Compile Include="Interfaces\IDrawingEngine.cs" />
     <Compile Include="Models\Cards\BadLuckCard.cs" />
     <Compile Include="Bank.cs" />

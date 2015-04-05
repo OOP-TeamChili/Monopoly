@@ -19,8 +19,8 @@
         private int secondDiceCursorRow;
         private int secondDiceCursorCol;
 
-        public int FirstDiceValue { get;  private set; }
-        public int SecondDiceValue { get;  private set; }
+        public int FirstDiceValue { get;   set; }
+        public int SecondDiceValue { get;   set; }
 
         private string[][,] dices;
         
