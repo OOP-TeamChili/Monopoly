@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChanceSpace.cs" />
+    <Compile Include="GoToPrison.cs" />
     <Compile Include="Interfaces\IDrawingEngine.cs" />
+    <Compile Include="Jail.cs" />
     <Compile Include="Models\Cards\BadLuckCard.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BuildingType.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Interfaces\IRotateble.cs" />
     <Compile Include="Interfaces\ISavable.cs" />
     <Compile Include="Models\Cards\MoveCard.cs" />
+    <Compile Include="ParkingSpace.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Models\Cards\SafeCard.cs" />
     <Compile Include="Models\Cards\SpaceCard.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="RailRoad.cs" />
     <Compile Include="Space.cs" />
     <Compile Include="StartSpace.cs" />
+    <Compile Include="Tax.cs" />
     <Compile Include="UtilitySpace.cs" />
   </ItemGroup>
   <ItemGroup>
