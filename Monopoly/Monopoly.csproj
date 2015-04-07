@@ -59,7 +59,7 @@
     <Compile Include="Models\Cards\CardType.cs" />
     <Compile Include="Models\Cards\ChanceCard.cs" />
     <Compile Include="Color.cs" />
-    <Compile Include="Models\CommunityChestSpace.cs" />
+    <Compile Include="CommunityChestSpace.cs" />
     <Compile Include="Models\Dices\Dices.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="GameLogic\GameManager.cs" />

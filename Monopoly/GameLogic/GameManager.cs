@@ -9,6 +9,7 @@
     using Monopoly.Players;
     using Monopoly.Cards;
     using MonopolyConsoleClient;
+using System.IO;    
 
     public class GameManager
     {
@@ -47,13 +48,32 @@
                 {
                     throw new ArgumentNullException("An implementation of the IDrawEngine class must be provided.");
                 }
-
                 this.drawEngine = value;
             }
         }
+        public void Draw()
+        {
 
+            StreamReader reader = new StreamReader(@"../../../Monopoly/Files/field.txt");
+            using (reader)
+            {
+                string currentLine = reader.ReadLine();
+                int row = 0;
+                while (currentLine != null)
+                {
+                    for (int i = 0; i < currentLine.Length; i++)
+                    {
+                        this.drawEngine.DrawText(0, row, currentLine);
+                    }                   
+                    row++;
+                    currentLine = reader.ReadLine();
+                }
+            }
+        }
         public void Game(Player[] players)
         {
+            
+          
             List<Space> listOfSpaces = new List<Space>();
             int pairs = 0;
 
@@ -138,6 +158,7 @@
             int currentPlayerCounter = 0;          
   
             //While LOOP for the game logic - it iterates over each player
+            Draw();
             while (true)
             {
                 Dices dices = new Dices(5, 0);
@@ -357,7 +378,7 @@
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
         private void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
-            this.DrawEngine.DrawText(0, 0, "Player to decide - buy(1) OR pass(2)");
+            this.DrawEngine.DrawText(40, 30, "Player to decide - buy(1) OR pass(2)");
             int decision = int.Parse(Console.ReadLine());
             if (decision == 1)
             {
