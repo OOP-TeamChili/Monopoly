@@ -1,7 +1,7 @@
 ﻿namespace Monopoly.Cards
 {
     using System;
-    public class ChanceCard
+    public abstract class ChanceCard
     {
         private const decimal MinCash = 0;
         private const int MinDescLen = 1;

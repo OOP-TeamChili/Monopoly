@@ -55,14 +55,15 @@
         {
             List<Space> listOfSpaces = new List<Space>();
             
-            ChanceSpace ChanceSpaceObject=new ChanceSpace();
-           
-            listOfSpaces.Add(ChanceSpaceObject);
-            listOfSpaces.Add(ChanceSpaceObject);
-            listOfSpaces.Add(ChanceSpaceObject);
-            listOfSpaces.Add(ChanceSpaceObject);
-            listOfSpaces.Add(ChanceSpaceObject);
-            listOfSpaces.Add(ChanceSpaceObject);
+            //ChanceSpace ChanceSpaceObject=new ChanceSpace();
+            CommunityChestSpace CommunityChestSpaceObject = new CommunityChestSpace();
+            ChanceSpace ChanceSpaceObject = new ChanceSpace();
+            listOfSpaces.Add(CommunityChestSpaceObject);
+            listOfSpaces.Add(CommunityChestSpaceObject);
+            listOfSpaces.Add(CommunityChestSpaceObject);
+            listOfSpaces.Add(CommunityChestSpaceObject);
+            listOfSpaces.Add(CommunityChestSpaceObject);
+            listOfSpaces.Add(CommunityChestSpaceObject);
 
             
             int pairs = 0;
@@ -113,7 +114,7 @@
                 //Definig where this player is
                 var currentSpace = listOfSpaces[player.Position];
 
-                CheckSpaces(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
 
                 //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE     
                 
@@ -133,7 +134,7 @@
             }
         }
 
-        private void CheckSpaces(Player[] players, List<Space> listOfSpaces, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
+        private void CheckSpaces(Player[] players, List<Space> listOfSpaces, CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
         {
             //Case if the Player stepped on a property space
             if (currentSpace is PropertySpace)
@@ -153,11 +154,20 @@
             //Case if the Player stepped on a Chance space
             if (currentSpace is ChanceSpace)
             {
-                SteppedOnChanceSpace(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                SteppedOnChanceSpace(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, 
+                    currentPlayerCounter, player, currentSpace);
+            }
+            //Case if the Player stepped on a Community Chest Space
+            if (currentSpace is CommunityChestSpace)
+            {
+                SteppedOnCommunityChestSpace(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, 
+                    currentPlayerCounter, player, currentSpace);
             }
         }
 
-        private void SteppedOnChanceSpace(Player[] players, List<Space> listOfSpaces, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
+        private void SteppedOnChanceSpace(Player[] players, List<Space> listOfSpaces,
+            CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, 
+            int currentPlayerCounter, Player player, Space currentSpace)
         {
             ChanceCard drawChanceCard = ChanceSpaceObject.ChanceCardPull();
             if (drawChanceCard is SpaceCard)
@@ -165,7 +175,45 @@
                 SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;
                 player.Position = drawChanceCardAsSpaceCard.PositionToGo;
                 currentSpace = listOfSpaces[player.Position];
-                CheckSpaces(players, listOfSpaces, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+            if (drawChanceCard is MoveCard)
+            {
+                MoveCard drawChanceCardAsMoveCard = drawChanceCard as MoveCard;
+                player.Position = drawChanceCardAsMoveCard.SquaresToMove+player.Position;
+                currentSpace = listOfSpaces[player.Position];
+                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+            if (drawChanceCard is GoodLuckCard)
+            {
+                GoodLuckCard drawChanceCardAsMoveCard = drawChanceCard as GoodLuckCard;
+                player.AddCash((int)drawChanceCardAsMoveCard.Cash);          
+            }
+        }
+
+        private void SteppedOnCommunityChestSpace(Player[] players, List<Space> listOfSpaces,
+            CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter,
+            Player player, Space currentSpace)
+        {
+            ChanceCard drawCommunityChestCard = CommunityChestSpaceObject.ChanceCardPull();
+            if (drawCommunityChestCard is SpaceCard)
+            {
+                SpaceCard drawChanceCardAsSpaceCard = drawCommunityChestCard as SpaceCard;
+                player.Position = drawChanceCardAsSpaceCard.PositionToGo;
+                currentSpace = listOfSpaces[player.Position];
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+            if (drawCommunityChestCard is MoveCard)
+            {
+                MoveCard drawChanceCardAsMoveCard = drawCommunityChestCard as MoveCard;
+                player.Position = drawChanceCardAsMoveCard.SquaresToMove + player.Position;
+                currentSpace = listOfSpaces[player.Position];
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+            }
+            if (drawCommunityChestCard is GoodLuckCard)
+            {
+                GoodLuckCard drawChanceCardAsMoveCard = drawCommunityChestCard as GoodLuckCard;
+                player.AddCash((int)drawChanceCardAsMoveCard.Cash);
             }
         }
 
