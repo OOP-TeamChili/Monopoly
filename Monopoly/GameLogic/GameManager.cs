@@ -9,13 +9,13 @@
     using Monopoly.Players;
     using Monopoly.Cards;
     using MonopolyConsoleClient;
-using System.IO;    
+    using System.IO;
 
     public class GameManager
     {
         private const int DiceMinValue = 1;
         private const int DiceMaxValue = 6;
-        private const int PositionsOnBoard = 42;
+        private const int PositionsOnBoard = 40;
         private const int CycleCash = 200;
         private static GameManager instance;
         private IDrawingEngine drawEngine;
@@ -24,7 +24,7 @@ using System.IO;
         {
             this.DrawEngine = drawEngine;
         }
-        
+
         public static GameManager GetInstance(IDrawingEngine drawEngine)
         {
             if (GameManager.instance == null)
@@ -35,7 +35,7 @@ using System.IO;
             return GameManager.instance;
         }
 
-        public IDrawingEngine DrawEngine 
+        public IDrawingEngine DrawEngine
         {
             get
             {
@@ -64,7 +64,7 @@ using System.IO;
                     for (int i = 0; i < currentLine.Length; i++)
                     {
                         this.drawEngine.DrawText(0, row, currentLine);
-                    }                   
+                    }
                     row++;
                     currentLine = reader.ReadLine();
                 }
@@ -72,8 +72,8 @@ using System.IO;
         }
         public void Game(Player[] players)
         {
-            
-          
+
+
             List<Space> listOfSpaces = new List<Space>();
             int pairs = 0;
 
@@ -81,13 +81,13 @@ using System.IO;
             CommunityChestSpace CommunityChestSpaceObject = new CommunityChestSpace();
             ChanceSpace ChanceSpaceObject = new ChanceSpace();
             ParkingSpace parking = new ParkingSpace();
-            
+
             listOfSpaces.Add(parking);
-            PropertySpace oldKentRoad = new PropertySpace("Old Kent Road", 60,30,2,10,30,90,160,250);
+            PropertySpace oldKentRoad = new PropertySpace("Old Kent Road", 60, 30, 2, 10, 30, 90, 160, 250);
             listOfSpaces.Add(oldKentRoad);
             listOfSpaces.Add(CommunityChestSpaceObject);
             PropertySpace whiteChappelRoad = new PropertySpace("White Chapel Road", 60, 30, 4, 20, 60, 180, 320, 450);
-            listOfSpaces.Add(whiteChappelRoad);         
+            listOfSpaces.Add(whiteChappelRoad);
             Tax incomeTax = new Tax(200);
             listOfSpaces.Add(incomeTax);
             RailRoad kingsCrossStation = new RailRoad("kings Cross Station", 200, 100, 25);
@@ -109,17 +109,17 @@ using System.IO;
             listOfSpaces.Add(whitehall);
             PropertySpace nortamberLandAvenue = new PropertySpace("Northumberland avenue", 160, 80, 12, 60, 180, 500, 700, 900);
             listOfSpaces.Add(nortamberLandAvenue);
-            RailRoad marylibone=new RailRoad("Marylibone station", 200, 100, 25);
-            listOfSpaces.Add(marylibone);   
+            RailRoad marylibone = new RailRoad("Marylibone station", 200, 100, 25);
+            listOfSpaces.Add(marylibone);
             PropertySpace bawStreet = new PropertySpace("Baw Street", 180, 90, 14, 70, 200, 550, 750, 950);
             listOfSpaces.Add(bawStreet);
-            listOfSpaces.Add(CommunityChestSpaceObject);                  
+            listOfSpaces.Add(CommunityChestSpaceObject);
             PropertySpace marlboroStreet = new PropertySpace("Marlborough Street", 180, 90, 14, 70, 200, 550, 750, 950);
             listOfSpaces.Add(marlboroStreet);
             PropertySpace vineStreet = new PropertySpace("Vine Street", 200, 100, 16, 80, 220, 600, 800, 1000);
-            listOfSpaces.Add(vineStreet);            
+            listOfSpaces.Add(vineStreet);
             listOfSpaces.Add(parking);
-            PropertySpace strand = new PropertySpace("Strand", 200, 110, 18, 90, 250, 700,875,1050);
+            PropertySpace strand = new PropertySpace("Strand", 200, 110, 18, 90, 250, 700, 875, 1050);
             listOfSpaces.Add(strand);
             listOfSpaces.Add(ChanceSpaceObject);
             PropertySpace fleetStreet = new PropertySpace("Fleet Street", 220, 110, 18, 90, 250, 700, 875, 1050);
@@ -155,20 +155,20 @@ using System.IO;
             PropertySpace mayfair = new PropertySpace("Mayfair", 400, 200, 50, 200, 600, 1400, 1700, 2000);
             listOfSpaces.Add(mayfair);
             this.DrawEngine.ClearScreen();
-            int currentPlayerCounter = 0;          
-  
+            int currentPlayerCounter = 0;
+
             //While LOOP for the game logic - it iterates over each player
             Draw();
             while (true)
             {
                 Dices dices = new Dices(5, 0);
                 //dices.Rotate();
-                dices.FirstDiceValue = 2;
-                dices.SecondDiceValue = 1;
+                dices.FirstDiceValue = 5;
+                dices.SecondDiceValue = 3;
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //Console.WriteLine(dices.FirstDiceValue);
                 //Console.WriteLine(dices.SecondDiceValue); 
-                
+
                 if (dices.FirstDiceValue == dices.SecondDiceValue)
                 {
                     pairs++;
@@ -179,9 +179,11 @@ using System.IO;
                 }
 
                 //Defining which player's turn is
-                var player = players[currentPlayerCounter];
-                player.Position = player.Position + dices.FirstDiceValue + dices.SecondDiceValue;
-                                
+                var player = players[currentPlayerCounter];                
+                player.Position = (player.Position + dices.FirstDiceValue + dices.SecondDiceValue)%listOfSpaces.Count;
+
+                PlayerDraw(player);
+
                 if (player.Position > PositionsOnBoard - 1)
                 {
                     player.Position = player.Position - PositionsOnBoard;
@@ -190,11 +192,11 @@ using System.IO;
                 //Definig where this player is
                 var currentSpace = listOfSpaces[player.Position];
 
-                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, 
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject,
                     ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
 
                 //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE     
-                             
+
                 if (dices.FirstDiceValue != dices.SecondDiceValue)
                 {
                     currentPlayerCounter++;
@@ -202,9 +204,46 @@ using System.IO;
                     {
                         currentPlayerCounter = 0;
                     }
-                }   
+                }
             }
         }
+
+        private void PlayerDraw(Player player)
+        {
+            int oldX = player.PosX;
+            int oldY = player.PosY;
+            if (player.Position <= 10)
+            {  
+                player.PosX = 110 + player.PlayerNumber - player.Position * 11;
+                player.PosY = 72;            
+            }
+
+            else if (player.Position > 10 && player.Position < 20)
+            {  
+                player.PosX=player.PlayerNumber;
+                player.PosY=72 - (player.Position - 10) * 7;
+            }
+            else if (player.Position == 20)
+            {  
+                player.PosX = player.PlayerNumber;
+                player.PosY = 1;
+            }
+            else if (player.Position >= 21 && player.Position < 30)
+            {                
+                player.PosX = player.PlayerNumber + (player.Position - 20) * 11;
+                player.PosY = 7;
+            }
+            else if (player.Position > 30 && player.Position < 40)
+            { 
+                player.PosX = 110 + player.PlayerNumber;
+                player.PosY = 2 + (player.Position - 30) * 7;
+            }
+            this.drawEngine.DrawText(oldX, oldY, " ");
+            this.drawEngine.DrawText(player.PosX, player.PosY, player.Symbol.ToString());
+            
+        }
+
+
 
         private void CheckSpaces(Player[] players, List<Space> listOfSpaces, CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
         {
@@ -221,18 +260,18 @@ using System.IO;
             //Case if the Player stepped on a RailRoad space
             if (currentSpace is RailRoad)
             {
-            SteppedOnRailRoadSpace(players, listOfSpaces, currentPlayerCounter, player, currentSpace);
+                SteppedOnRailRoadSpace(players, listOfSpaces, currentPlayerCounter, player, currentSpace);
             }
             //Case if the Player stepped on a Chance space
             if (currentSpace is ChanceSpace)
             {
-                SteppedOnChanceSpace(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, 
+                SteppedOnChanceSpace(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject,
                     currentPlayerCounter, player, currentSpace);
             }
             //Case if the Player stepped on a Community Chest Space
             if (currentSpace is CommunityChestSpace)
             {
-                SteppedOnCommunityChestSpace(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, 
+                SteppedOnCommunityChestSpace(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject,
                     currentPlayerCounter, player, currentSpace);
             }
             if (currentSpace is Tax)
@@ -241,17 +280,16 @@ using System.IO;
                 player.RemoveCash(currentTaxSpace.TaxToPay);
             }
             if (currentSpace is GoToPrison)
-            {               
-                player.Position=10;
+            {
+                player.Position = 10;
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
-
-            }
+            }           
             //TODO PLAYER IS ON JAIL SPACE
         }
 
         private void SteppedOnChanceSpace(Player[] players, List<Space> listOfSpaces,
-            CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, 
+            CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject,
             int currentPlayerCounter, Player player, Space currentSpace)
         {
             ChanceCard drawChanceCard = ChanceSpaceObject.ChanceCardPull();
@@ -260,19 +298,19 @@ using System.IO;
                 SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;
                 player.Position = drawChanceCardAsSpaceCard.PositionToGo;
                 currentSpace = listOfSpaces[player.Position];
-                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawChanceCard is MoveCard)
             {
                 MoveCard drawChanceCardAsMoveCard = drawChanceCard as MoveCard;
-                player.Position = drawChanceCardAsMoveCard.SquaresToMove+player.Position;
+                player.Position = drawChanceCardAsMoveCard.SquaresToMove + player.Position;
                 currentSpace = listOfSpaces[player.Position];
-                CheckSpaces(players, listOfSpaces,CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawChanceCard is GoodLuckCard)
             {
                 GoodLuckCard drawChanceCardAsMoveCard = drawChanceCard as GoodLuckCard;
-                player.AddCash((int)drawChanceCardAsMoveCard.Cash);          
+                player.AddCash((int)drawChanceCardAsMoveCard.Cash);
             }
         }
 
@@ -286,14 +324,14 @@ using System.IO;
                 SpaceCard drawChanceCardAsSpaceCard = drawCommunityChestCard as SpaceCard;
                 player.Position = drawChanceCardAsSpaceCard.PositionToGo;
                 currentSpace = listOfSpaces[player.Position];
-                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawCommunityChestCard is MoveCard)
             {
                 MoveCard drawChanceCardAsMoveCard = drawCommunityChestCard as MoveCard;
                 player.Position = drawChanceCardAsMoveCard.SquaresToMove + player.Position;
                 currentSpace = listOfSpaces[player.Position];
-                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject,ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
+                CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawCommunityChestCard is GoodLuckCard)
             {
@@ -320,35 +358,35 @@ using System.IO;
         }
 
         private void SteppedOnUtilitySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
-        {           
-                UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
-                if (currentUtilitySpace.Owned == false)
-                {
-                    FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentUtilitySpace);
-                    player.OwnedUtilities = currentUtilitySpace.Owned == true ?
-                        player.OwnedUtilities + 1 :
-                        player.OwnedUtilities;
-                }
-                else if (currentUtilitySpace.Owned == true &&
-                  !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
-                {
-                    OtherPlayerOwnUtility(players, listOfSpaces, player, currentUtilitySpace);
-                }           
+        {
+            UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
+            if (currentUtilitySpace.Owned == false)
+            {
+                FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentUtilitySpace);
+                player.OwnedUtilities = currentUtilitySpace.Owned == true ?
+                    player.OwnedUtilities + 1 :
+                    player.OwnedUtilities;
+            }
+            else if (currentUtilitySpace.Owned == true &&
+              !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+            {
+                OtherPlayerOwnUtility(players, listOfSpaces, player, currentUtilitySpace);
+            }
         }
 
         private void SteppedOnPropertySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
-        {          
-                PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
-                if (currentPropertySpace.Owned == false)
-                {
-                    FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentPropertySpace);
-                }
-                else if (currentPropertySpace.Owned == true &&
-                    !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
-                {
-                    OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
-                }
-            
+        {
+            PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
+            if (currentPropertySpace.Owned == false)
+            {
+                FreeSpace(players, listOfSpaces, currentPlayerCounter, player, currentPropertySpace);
+            }
+            else if (currentPropertySpace.Owned == true &&
+                !player.ListOfProperties.Contains(listOfSpaces[player.Position]))
+            {
+                OtherPlayerOwn(players, listOfSpaces, player, currentPropertySpace);
+            }
+
         }
 
         private void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
@@ -358,7 +396,7 @@ using System.IO;
                 var otherPlayer = players[i];
                 if (otherPlayer.ListOfProperties.Contains(listOfSpaces[player.Position]))
                 {
-                    PayingMoney(player, (int)currentUtilitySpace.Rent*otherPlayer.OwnedUtilities, otherPlayer);
+                    PayingMoney(player, (int)currentUtilitySpace.Rent * otherPlayer.OwnedUtilities, otherPlayer);
                 }
             }
         }
@@ -496,14 +534,14 @@ using System.IO;
                 player.RemoveCash(moneyToPay);
                 otherPlayer.AddCash(moneyToPay);
             }
-            
+
         }
 
         private void ShowPlayerProperties(Player player)
         {
             for (int i = 0; i < player.ListOfProperties.Count; i++)
             {
-                Console.WriteLine("Number in List:{0} Name:{1} Price:{2} ",i+1,
+                Console.WriteLine("Number in List:{0} Name:{1} Price:{2} ", i + 1,
                     player.ListOfProperties[i].Name, player.ListOfProperties[i].BuyingPrice);
                 Console.WriteLine("Selling Price:{0} Mortgaged:{1}", player.ListOfProperties[i].SellingPrice, player.ListOfProperties[i].Mortgaged);
                 Console.WriteLine("Mortgage value:{0}", player.ListOfProperties[i].MortgageValue);
@@ -512,5 +550,5 @@ using System.IO;
         }
     }
 }
-        
-    
+
+

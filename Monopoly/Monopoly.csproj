@@ -68,6 +68,7 @@
     <Compile Include="Interfaces\IRotateble.cs" />
     <Compile Include="Interfaces\ISavable.cs" />
     <Compile Include="Models\Cards\MoveCard.cs" />
+    <Compile Include="Models\Players\Symbols.cs" />
     <Compile Include="ParkingSpace.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Models\Cards\SafeCard.cs" />

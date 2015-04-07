@@ -10,6 +10,7 @@
     using Monopoly.Interfaces;
     using Monopoly.Players;
     using MonopolyConsoleClient.DrawEngine;
+    using MonopolyConsoleClient.Models.Players;
 
     class MonopolyEntryPoint
     {
@@ -65,31 +66,31 @@
             if (playersCount == 2)
             {
                 Console.Write("Enter 1st player's name : ");
-                players[0] = new Player(1, Console.ReadLine());
+                players[0] = new Player(1, Console.ReadLine(),Symbols.A);
                 Console.Write("Enter 2nd player's name : ");
-                players[1] = new Player(2, Console.ReadLine());
+                players[1] = new Player(2, Console.ReadLine(),Symbols.B);
 
                 //TODO Trqbva da e v masiv za da moje da se izvikvat pored
             }
             if (playersCount == 3)
             {
                 Console.Write("Enter 1st player's name : ");
-                players[0] = new Player(1, Console.ReadLine());
+                players[0] = new Player(1, Console.ReadLine(),Symbols.A);
                 Console.Write("Enter 2nd player's name : ");
-                players[1] = new Player(2, Console.ReadLine());
+                players[1] = new Player(2, Console.ReadLine(),Symbols.B);
                 Console.Write("Enter 3rd player's name : ");
-                players[2] = new Player(3, Console.ReadLine());
+                players[2] = new Player(3, Console.ReadLine(),Symbols.C);
             }
             if (playersCount == 4)
             {
                 Console.Write("Enter 1st player's name : ");
-                players[0] = new Player(1, Console.ReadLine());
+                players[0] = new Player(1, Console.ReadLine(),Symbols.A);
                 Console.Write("Enter 2nd player's name : ");
-                players[1] = new Player(2, Console.ReadLine());
+                players[1] = new Player(2, Console.ReadLine(), Symbols.B);
                 Console.Write("Enter 3rd player's name : ");
-                players[2] = new Player(3, Console.ReadLine());
+                players[2] = new Player(3, Console.ReadLine(), Symbols.C);
                 Console.Write("Enter 4th player's name : ");
-                players[3] = new Player(4, Console.ReadLine());
+                players[3] = new Player(4, Console.ReadLine(),Symbols.D);
             }
             #endregion playersInitializingplayer
 

@@ -5,6 +5,7 @@
 
     using Monopoly.Cards;
     using Monopoly.Interfaces;
+    using MonopolyConsoleClient.Models.Players;
 
     public class Player : Element
     {
@@ -22,14 +23,16 @@
         private List<PurchasableSpace> listOfProperties;
         public int OwnedStations { get; set; }
         public int OwnedUtilities { get; set; }
-      
-
+        public Symbols Symbol { get; private set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        public bool IsInJail  { get; set; }
         public Player()
         {
             throw new NotImplementedException();
         }
 
-        public Player(int playerNumber, string playerName, int startPos = 0, int startBankroll = 1500,int ownedStations=0,int ownedUtilities=0)
+        public Player(int playerNumber, string playerName, Symbols symbol, int startPos = 0, int startBankroll = 500, int ownedStations = 0, int ownedUtilities = 0)
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
@@ -39,6 +42,9 @@
             this.OwnedStations = ownedStations;
             this.OwnedUtilities = ownedStations;
             this.listOfProperties = new List<PurchasableSpace>();
+            this.Symbol = symbol;
+            this.PosX = 110 + this.PlayerNumber;
+            this.PosY = 72;
         }
 
         public int Bankroll
