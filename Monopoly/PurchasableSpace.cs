@@ -1,8 +1,9 @@
 ﻿namespace Monopoly
 {
+    using MonopolyConsoleClient.Interfaces;
     using System;
 
-    public abstract class PurchasableSpace : Space
+    public abstract class PurchasableSpace : Space, IPurchasable
     {
         private const decimal MinPropertyPrice = 1;
         private const decimal MinMortgageValue = 1;

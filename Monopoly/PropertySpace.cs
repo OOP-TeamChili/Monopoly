@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MonopolyConsoleClient.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Monopoly
 {
-    public class PropertySpace:PurchasableSpace
+    public class PropertySpace:PurchasableSpace,IPurchasable
     {
         public int NumberOfhouses { get; set; }
         public int Hotel { get; set; }
