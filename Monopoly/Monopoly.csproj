@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChanceSpace.cs" />
+    <Compile Include="FieldInitializator.cs" />
     <Compile Include="GoToPrison.cs" />
     <Compile Include="Interfaces\IDice.cs" />
     <Compile Include="Interfaces\IDrawCard.cs" />

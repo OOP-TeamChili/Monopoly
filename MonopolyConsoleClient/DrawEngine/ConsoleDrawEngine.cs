@@ -1,6 +1,7 @@
 ﻿namespace MonopolyConsoleClient.DrawEngine
 {
     using System;
+    using System.IO;
     using System.Threading;
 
     using Monopoly.Interfaces;
@@ -32,10 +33,23 @@
             this.PrintTextAtPosition(player.PosX, player.PosY, player.Symbol.ToString());
         }
 
-        private void PrintTextAtPosition(int x, int y, string text)
+        public void DrawField()
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(text);
+            StreamReader reader = new StreamReader(@"../../../Monopoly/Files/field.txt");
+            using (reader)
+            {
+                string currentLine = reader.ReadLine();
+                int row = 0;
+                while (currentLine != null)
+                {
+                    for (int i = 0; i < currentLine.Length; i++)
+                    {
+                        this.DrawText(0, row, currentLine);
+                    }
+                    row++;
+                    currentLine = reader.ReadLine();
+                }
+            }
         }
 
         public void ClearScreen()
@@ -82,6 +96,12 @@
             }
 
             Console.WriteLine();
+        }
+
+        private void PrintTextAtPosition(int x, int y, string text)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(text);
         }
     }
 }

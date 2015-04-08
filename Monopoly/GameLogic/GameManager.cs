@@ -5,11 +5,11 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Monopoly;
     using Monopoly.Cards;
     using Monopoly.Dices;
     using Monopoly.Interfaces;
     using Monopoly.Players;
-    using MonopolyConsoleClient;
 
     public class GameManager
     {
@@ -67,114 +67,20 @@
                 this.dice = value;
             }
         }
-        public void Draw()
-        {
 
-            StreamReader reader = new StreamReader(@"../../../Monopoly/Files/field.txt");
-            using (reader)
-            {
-                string currentLine = reader.ReadLine();
-                int row = 0;
-                while (currentLine != null)
-                {
-                    for (int i = 0; i < currentLine.Length; i++)
-                    {
-                        this.drawEngine.DrawText(0, row, currentLine);
-                    }
-                    row++;
-                    currentLine = reader.ReadLine();
-                }
-            }
-        }
         public void Game(Player[] players)
         {
 
-
-            List<Space> listOfSpaces = new List<Space>();
             int pairs = 0;
+            IList<Space> listOfSpaces = FieldInitializator.GetField();
+            var communityChestSpaceObject = listOfSpaces.FirstOrDefault(s => s is CommunityChestSpace) as CommunityChestSpace;
+            var chanceSpaceObject = listOfSpaces.FirstOrDefault(s => s is ChanceSpace) as ChanceSpace;
 
-            //ChanceSpace ChanceSpaceObject=new ChanceSpace();
-            CommunityChestSpace communityChestSpaceObject = new CommunityChestSpace();
-            ChanceSpace chanceSpaceObject = new ChanceSpace();
-            ParkingSpace parking = new ParkingSpace();
-
-            listOfSpaces.Add(parking);
-            PropertySpace oldKentRoad = new PropertySpace("Old Kent Road", 60, 30, 2, 10, 30, 90, 160, 250, Color.Brown);
-            listOfSpaces.Add(oldKentRoad);
-            listOfSpaces.Add(communityChestSpaceObject);
-            PropertySpace whiteChappelRoad = new PropertySpace("White Chapel Road", 60, 30, 4, 20, 60, 180, 320, 450, Color.Brown);
-            listOfSpaces.Add(whiteChappelRoad);
-            Tax incomeTax = new Tax(200);
-            listOfSpaces.Add(incomeTax);
-            RailRoad kingsCrossStation = new RailRoad("Kings Cross Station", 200, 100, 25);
-            listOfSpaces.Add(kingsCrossStation);
-            PropertySpace theAngleIslington = new PropertySpace("The Angel Islington", 100, 50, 6, 30, 90, 270, 400, 550, Color.LightBlue);
-            listOfSpaces.Add(theAngleIslington);
-            listOfSpaces.Add(chanceSpaceObject);
-            PropertySpace eustonRoad = new PropertySpace("Euston Road", 100, 50, 6, 30, 90, 270, 400, 550, Color.LightBlue);
-            listOfSpaces.Add(eustonRoad);
-            PropertySpace pentonvilleRoad = new PropertySpace("Pentonville Road", 120, 60, 8, 40, 100, 300, 450, 600, Color.LightBlue);
-            listOfSpaces.Add(pentonvilleRoad);
-            Jail jail = new Jail();
-            listOfSpaces.Add(jail);
-            PropertySpace pallMall = new PropertySpace("Pall Mall", 140, 70, 10, 50, 150, 450, 625, 750, Color.Pink);
-            listOfSpaces.Add(pallMall);
-            UtilitySpace electricCompany = new UtilitySpace("Electric Company", 150, 75, 30);
-            listOfSpaces.Add(electricCompany);
-            PropertySpace whitehall = new PropertySpace("Whitehall", 140, 70, 10, 50, 150, 450, 625, 750, Color.Pink);
-            listOfSpaces.Add(whitehall);
-            PropertySpace nortamberLandAvenue = new PropertySpace("Northumberland avenue", 160, 80, 12, 60, 180, 500, 700, 900, Color.Pink);
-            listOfSpaces.Add(nortamberLandAvenue);
-            RailRoad marylibone = new RailRoad("Marylibone station", 200, 100, 25);
-            listOfSpaces.Add(marylibone);
-            PropertySpace bawStreet = new PropertySpace("Bow Street", 180, 90, 14, 70, 200, 550, 750, 950, Color.Orange);
-            listOfSpaces.Add(bawStreet);
-            listOfSpaces.Add(communityChestSpaceObject);
-            PropertySpace marlboroStreet = new PropertySpace("Marlborough Street", 180, 90, 14, 70, 200, 550, 750, 950, Color.Orange);
-            listOfSpaces.Add(marlboroStreet);
-            PropertySpace vineStreet = new PropertySpace("Vine Street", 200, 100, 16, 80, 220, 600, 800, 1000, Color.Orange);
-            listOfSpaces.Add(vineStreet);
-            listOfSpaces.Add(parking);
-            PropertySpace strand = new PropertySpace("Strand", 200, 110, 18, 90, 250, 700, 875, 1050, Color.Red);
-            listOfSpaces.Add(strand);
-            listOfSpaces.Add(chanceSpaceObject);
-            PropertySpace fleetStreet = new PropertySpace("Fleet Street", 220, 110, 18, 90, 250, 700, 875, 1050, Color.Red);
-            listOfSpaces.Add(fleetStreet);
-            PropertySpace trafalfarQuare = new PropertySpace("Trafalgar Square", 240, 120, 20, 100, 300, 750, 925, 1100, Color.Red);
-            listOfSpaces.Add(trafalfarQuare);
-            RailRoad fanchurchStation = new RailRoad("Fanchurch Station", 200, 100, 25);
-            listOfSpaces.Add(fanchurchStation);
-            PropertySpace leicesterSquare = new PropertySpace("Leicester square", 260, 130, 22, 110, 330, 800, 975, 1150, Color.Yellow);
-            listOfSpaces.Add(leicesterSquare);
-            PropertySpace coventryStreet = new PropertySpace("Coventry Street", 260, 130, 22, 110, 330, 800, 975, 1150, Color.Yellow);
-            listOfSpaces.Add(coventryStreet);
-            UtilitySpace waterCompany = new UtilitySpace("Water Company", 150, 75, 30);
-            listOfSpaces.Add(waterCompany);
-            PropertySpace piccadilly = new PropertySpace("Piccadilly", 280, 140, 22, 120, 360, 850, 1025, 1200, Color.Yellow);
-            listOfSpaces.Add(piccadilly);
-            GoToPrison gotoPrison = new GoToPrison();
-            listOfSpaces.Add(gotoPrison);
-            PropertySpace oxfordStreet = new PropertySpace("Oxford Street", 300, 150, 26, 130, 390, 900, 1100, 1275, Color.Green);
-            listOfSpaces.Add(oxfordStreet);
-            PropertySpace regentStreet = new PropertySpace("Regent Street", 300, 150, 26, 130, 390, 900, 1100, 1275, Color.Green);
-            listOfSpaces.Add(regentStreet);
-            listOfSpaces.Add(communityChestSpaceObject);
-            PropertySpace bondStreet = new PropertySpace("Bond Street", 320, 160, 28, 150, 450, 1000, 1200, 1400, Color.Green);
-            listOfSpaces.Add(bondStreet);
-            RailRoad liverpoolStation = new RailRoad("Liverpool Station", 200, 100, 25);
-            listOfSpaces.Add(liverpoolStation);
-            listOfSpaces.Add(chanceSpaceObject);
-            PropertySpace parkLane = new PropertySpace("Park Lane", 350, 175, 35, 175, 500, 1100, 1300, 1500, Color.DarkBlue);
-            listOfSpaces.Add(parkLane);
-            Tax superTax = new Tax(100);
-            listOfSpaces.Add(superTax);
-            PropertySpace mayfair = new PropertySpace("Mayfair", 400, 200, 50, 200, 600, 1400, 1700, 2000, Color.DarkBlue);
-            listOfSpaces.Add(mayfair);
             this.DrawEngine.ClearScreen();
             int currentPlayerCounter = 0;
 
             //While LOOP for the game logic - it iterates over each player
-            Draw();
+            this.DrawEngine.DrawField();
             while (true)
             {
                 //Dices dices = new Dices(5, 0);
@@ -182,7 +88,7 @@
                 //dices.FirstDiceValue = 5;
                 //dices.SecondDiceValue = 3;
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
-                this.DrawEngine.DrawText(40, 25, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
+                this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
                 //Console.WriteLine(dices.FirstDiceValue);
                 //Console.WriteLine(dices.SecondDiceValue); 
 
@@ -261,7 +167,7 @@
 
 
 
-        private void CheckSpaces(Player[] players, List<Space> listOfSpaces, CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
+        private void CheckSpaces(Player[] players, IList<Space> listOfSpaces, CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter, Player player, Space currentSpace)
         {
             //Case if the Player stepped on a property space
             if (currentSpace is PropertySpace)
@@ -304,7 +210,7 @@
             //TODO PLAYER IS ON JAIL SPACE
         }
 
-        private void SteppedOnChanceSpace(Player[] players, List<Space> listOfSpaces,
+        private void SteppedOnChanceSpace(Player[] players, IList<Space> listOfSpaces,
             CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject,
             int currentPlayerCounter, Player player, Space currentSpace)
         {
@@ -330,7 +236,7 @@
             }
         }
 
-        private void SteppedOnCommunityChestSpace(Player[] players, List<Space> listOfSpaces,
+        private void SteppedOnCommunityChestSpace(Player[] players, IList<Space> listOfSpaces,
             CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter,
             Player player, Space currentSpace)
         {
@@ -356,7 +262,7 @@
             }
         }
 
-        private void SteppedOnRailRoadSpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        private void SteppedOnRailRoadSpace(Player[] players, IList<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
         {
             RailRoad currentRailroadSpace = (RailRoad)currentSpace;
             if (currentRailroadSpace.Owned == false)
@@ -373,7 +279,7 @@
             }
         }
 
-        private void SteppedOnUtilitySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        private void SteppedOnUtilitySpace(Player[] players, IList<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
         {
             UtilitySpace currentUtilitySpace = (UtilitySpace)currentSpace;
             if (currentUtilitySpace.Owned == false)
@@ -390,7 +296,7 @@
             }
         }
 
-        private void SteppedOnPropertySpace(Player[] players, List<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
+        private void SteppedOnPropertySpace(Player[] players, IList<Space> listOfSpaces, int currentPlayerCounter, Player player, Space currentSpace)
         {
             PropertySpace currentPropertySpace = (PropertySpace)currentSpace;
             if (currentPropertySpace.Owned == false)
@@ -405,7 +311,7 @@
 
         }
 
-        private void OtherPlayerOwnUtility(Player[] players, List<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
+        private void OtherPlayerOwnUtility(Player[] players, IList<Space> listOfSpaces, Player player, UtilitySpace currentUtilitySpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -417,7 +323,7 @@
             }
         }
 
-        private void OtherPlayerOwnRailRoad(Player[] players, List<Space> listOfSpaces, Player player, RailRoad currentRailRoadSpace)
+        private void OtherPlayerOwnRailRoad(Player[] players, IList<Space> listOfSpaces, Player player, RailRoad currentRailRoadSpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -430,7 +336,7 @@
         }
 
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
-        private void FreeSpace(Player[] players, List<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
+        private void FreeSpace(Player[] players, IList<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
             this.DrawEngine.DrawText(40, 30, "Player to decide - buy(1) OR pass(2)");
             int decision = int.Parse(Console.ReadLine());
@@ -450,7 +356,7 @@
         }
 
         //IF someone else OWNS THE SPACE - player has to PAY
-        private void OtherPlayerOwn(Player[] players, List<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
+        private void OtherPlayerOwn(Player[] players, IList<Space> listOfSpaces, Player player, PropertySpace currentPropertySpace)
         {
             for (int i = 0; i < players.Length; i++)
             {
