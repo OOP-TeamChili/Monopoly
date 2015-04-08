@@ -90,16 +90,24 @@
 
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
-
+                for (int i = 0; i < players.Length; i++)
+                {
+                    this.DrawEngine.DrawText(14, 64+i, string.Format("Player {0} Bankroll: ", i+1) +players[i].Bankroll.ToString());
+                   
+                }
 
                 var player = players[currentPlayerCounter];
                 this.DrawEngine.DrawText(52, 13, "Player : " + player.ToString() + "'s turn");
-                this.DrawEngine.DrawText(45, 15, "Press ENTER key to throw dices");
+                this.DrawEngine.DrawText(45, 15, "Press ENTER key to throw dices");               
                 Console.ReadLine();
                 this.drawEngine.DrawText(45, 15, new string(' ', 35));
+                this.DrawEngine.DrawText(45, 57, new string(' ', 30));
                 this.dice.ThrowDices();
                 this.dice.FirstDiceValue += 1;
                 this.dice.SecondDiceValue += 1;
+
+                //this.dice.FirstDiceValue =3;
+                //this.dice.SecondDiceValue = 4;
 
                 if (this.Dice.FirstDiceValue == this.Dice.SecondDiceValue)
                 {
@@ -132,7 +140,7 @@
                 CheckSpaces(players, listOfSpaces, communityChestSpaceObject,
                     chanceSpaceObject, currentPlayerCounter, player, currentSpace);
 
-                //TODO:PLAYER WANTS TO BUILD HOUSES AND HOTEL SOMEWHERE     
+                
 
                 if (this.Dice.FirstDiceValue != this.Dice.SecondDiceValue)
                 {
@@ -229,21 +237,26 @@
         {
             ChanceCard drawChanceCard = ChanceSpaceObject.DrawCard();
             if (drawChanceCard is SpaceCard)
-            {
-                SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;
+            {                
+                this.DrawEngine.DrawText(45, 57, drawChanceCard.Description);
+                SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;                
                 player.Position = drawChanceCardAsSpaceCard.PositionToGo;
+                MovePlayer(player);
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawChanceCard is MoveCard)
             {
+                this.DrawEngine.DrawText(45, 57, drawChanceCard.Description);
                 MoveCard drawChanceCardAsMoveCard = drawChanceCard as MoveCard;
                 player.Position = drawChanceCardAsMoveCard.SquaresToMove + player.Position;
+                MovePlayer(player);
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
             if (drawChanceCard is GoodLuckCard)
             {
+                this.DrawEngine.DrawText(45, 57, drawChanceCard.Description);
                 GoodLuckCard drawChanceCardAsMoveCard = drawChanceCard as GoodLuckCard;
                 player.AddCash((int)drawChanceCardAsMoveCard.Cash);
             }
@@ -258,6 +271,7 @@
             {
                 SpaceCard drawChanceCardAsSpaceCard = drawCommunityChestCard as SpaceCard;
                 player.Position = drawChanceCardAsSpaceCard.PositionToGo;
+                MovePlayer(player);
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
@@ -265,6 +279,7 @@
             {
                 MoveCard drawChanceCardAsMoveCard = drawCommunityChestCard as MoveCard;
                 player.Position = drawChanceCardAsMoveCard.SquaresToMove + player.Position;
+                MovePlayer(player);
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }
