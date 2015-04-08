@@ -50,6 +50,7 @@
     <Compile Include="ChanceSpace.cs" />
     <Compile Include="GoToPrison.cs" />
     <Compile Include="Interfaces\IDice.cs" />
+    <Compile Include="Interfaces\IDrawCard.cs" />
     <Compile Include="Interfaces\IDrawingEngine.cs" />
     <Compile Include="Interfaces\IPurchasable.cs" />
     <Compile Include="Interfaces\IStreet.cs" />

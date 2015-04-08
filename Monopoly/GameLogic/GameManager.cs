@@ -308,7 +308,7 @@
             CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject,
             int currentPlayerCounter, Player player, Space currentSpace)
         {
-            ChanceCard drawChanceCard = ChanceSpaceObject.ChanceCardPull();
+            ChanceCard drawChanceCard = ChanceSpaceObject.DrawCard();
             if (drawChanceCard is SpaceCard)
             {
                 SpaceCard drawChanceCardAsSpaceCard = drawChanceCard as SpaceCard;
@@ -334,7 +334,7 @@
             CommunityChestSpace CommunityChestSpaceObject, ChanceSpace ChanceSpaceObject, int currentPlayerCounter,
             Player player, Space currentSpace)
         {
-            ChanceCard drawCommunityChestCard = CommunityChestSpaceObject.ChanceCardPull();
+            ChanceCard drawCommunityChestCard = CommunityChestSpaceObject.DrawCard();
             if (drawCommunityChestCard is SpaceCard)
             {
                 SpaceCard drawChanceCardAsSpaceCard = drawCommunityChestCard as SpaceCard;

@@ -1,23 +1,23 @@
-﻿using Monopoly;
-using Monopoly.Cards;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-    public class ChanceSpace : NotPurchasableSpace
+    using System.Collections.Generic;
+
+    using Monopoly;
+    using Monopoly.Cards;
+    using Monopoly.Interfaces;
+    
+    public class ChanceSpace : NotPurchasableSpace, IDrawCard
     {
+        private Queue<ChanceCard> chanceCards;
+
         public ChanceSpace()
             : base("Chance")
         {
+            this.chanceCards = CardInitializer.InitializeChanceList();
         }
 
-        public ChanceCard ChanceCardPull()
+        public ChanceCard DrawCard()
         {
-            Queue<ChanceCard> chanceCards = CardInitializer.InitializeChanceList();
             ChanceCard topCard = chanceCards.Dequeue();
             return topCard;
         }

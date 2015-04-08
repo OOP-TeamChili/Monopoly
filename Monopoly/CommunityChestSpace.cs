@@ -1,23 +1,23 @@
-﻿using Monopoly;
-using Monopoly.Cards;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Monopoly
+﻿namespace Monopoly
 {
-    public class CommunityChestSpace : NotPurchasableSpace
+    using System.Collections.Generic;
+
+    using Monopoly;
+    using Monopoly.Cards;
+    using Monopoly.Interfaces;
+
+    public class CommunityChestSpace : NotPurchasableSpace, IDrawCard
     {
+        private Queue<ChanceCard> communityCards;
+        
         public CommunityChestSpace()
             :base("Community Chest")
         {
+            this.communityCards = CardInitializer.InitializeChanceList();
         }
 
-        public ChanceCard ChanceCardPull()
+        public ChanceCard DrawCard()
         {
-            Queue<ChanceCard> communityCards = CardInitializer.InitializeChanceList();
             ChanceCard topCard = communityCards.Dequeue();
             return topCard;
         }
