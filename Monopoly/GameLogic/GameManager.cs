@@ -8,8 +8,10 @@
     using Monopoly;
     using Monopoly.Cards;
     using Monopoly.Dices;
+    using Monopoly.Exceptions;
     using Monopoly.Interfaces;
     using Monopoly.Players;
+    
 
     public class GameManager
     {
@@ -28,6 +30,7 @@
             this.Dice = new Dices(5, 0);
         }
 
+        //SINGLETON DESIGN PATTERN
         public static GameManager GetInstance(IDrawingEngine drawEngine)
         {
             if (GameManager.instance == null)
@@ -86,26 +89,33 @@
             {
                 //Dices dices = new Dices(5, 0);
                 this.Dice.Roll();
-                //dices.FirstDiceValue = 5;
-                //dices.SecondDiceValue = 3;
+                //this.Dice.FirstDiceValue = 1;
+                //this.Dice.SecondDiceValue = 1;
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
-                this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
+                //this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
                 //Console.WriteLine(dices.FirstDiceValue);
                 //Console.WriteLine(dices.SecondDiceValue); 
+                var player = players[currentPlayerCounter];
+               
 
                 if (this.Dice.FirstDiceValue == this.Dice.SecondDiceValue)
                 {
                     pairs++;
                     if (pairs == 3)
                     {
-                        //TO DO: player goes to prison
-                    }
+                        player.IsInJail = true;
+                        player.Position = GameManager.JailPosition;
+                        continue;
+                    }                    
+                }
+                else if (player.IsInJail==true)
+                {
+                    continue;
                 }
 
-                //Defining which player's turn is
-                var player = players[currentPlayerCounter];
                 player.Position = (player.Position + this.Dice.FirstDiceValue + this.Dice.SecondDiceValue) % listOfSpaces.Count;
-
+                //Defining which player's turn is
+               
                 MovePlayer(player);
 
                 if (player.Position > PositionsOnBoard - 1)
@@ -134,8 +144,7 @@
 
         private void MovePlayer(Player player)
         {
-            int oldX = player.PosX;
-            int oldY = player.PosY;
+            Position oldPosition = new Position(player.PosX,player.PosY);            
             if (player.Position <= 10)
             {  
                 player.PosX = 110 + player.PlayerNumber - player.Position * 11;
@@ -163,7 +172,7 @@
                 player.PosY = 2 + (player.Position - 30) * 7;
             }
 
-            this.DrawEngine.DrawPlayer(player, oldX, oldY);
+            this.DrawEngine.DrawPlayer(player, oldPosition);
         }
 
 
@@ -208,7 +217,7 @@
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }           
-            //TODO PLAYER IS ON JAIL SPACE
+            //TODO PLAYER IS ON JAIL SPACE            
         }
 
         private void SteppedOnChanceSpace(Player[] players, IList<Space> listOfSpaces,
@@ -340,7 +349,28 @@
         private void FreeSpace(Player[] players, IList<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
             this.DrawEngine.DrawText(40, 30, "Player to decide - buy(1) OR pass(2)");
-            int decision = int.Parse(Console.ReadLine());
+            bool isInvalidInput=true;
+            int decision = 0;
+            do
+            {
+                try
+                {
+                    decision = int.Parse(Console.ReadLine());
+                    if (decision < 1 || decision > 2)
+                    {
+                        throw new InvalidPlayerChoiceException();
+                    }
+                }
+                catch (InvalidPlayerChoiceException ex)
+                {
+                    this.DrawEngine.DrawText(40, 32, ex.Message);
+                    continue;
+                }
+                isInvalidInput = false;
+            } while (isInvalidInput);
+            this.DrawEngine.DrawText(40, 32, new string(' ', 30));
+
+
             if (decision == 1)
             {
                 if (player.Bankroll < currentPropertySpace.BuyingPrice)
@@ -354,6 +384,7 @@
                     currentPropertySpace.Owned = true;
                 }
             }
+            
         }
 
         //IF someone else OWNS THE SPACE - player has to PAY

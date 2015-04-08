@@ -6,6 +6,7 @@
 
     using Monopoly.Interfaces;
     using Monopoly.Players;
+    using Monopoly;
 
     internal class ConsoleDrawEngine : IDrawingEngine
     {
@@ -27,9 +28,9 @@
             this.PrintTextAtPosition(x, y, text);
         }
 
-        public void DrawPlayer(Player player, int oldX, int oldY)
+        public void DrawPlayer(Player player, Position oldPosition)
         {
-            this.PrintTextAtPosition(oldX, oldY, " ");
+            this.PrintTextAtPosition(oldPosition.X, oldPosition.Y, " ");
             this.PrintTextAtPosition(player.PosX, player.PosY, player.ToString());
         }
 

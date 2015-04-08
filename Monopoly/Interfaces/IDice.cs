@@ -3,7 +3,7 @@
     public interface IDice
     {
         int FirstDiceValue { get; }
-        int SecondDiceValue { get; }
+        int SecondDiceValue { get;  }
         void Roll();
     }
 }

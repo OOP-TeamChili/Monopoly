@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChanceSpace.cs" />
+    <Compile Include="Exceptions\InvalidPlayerChoiceException.cs" />
     <Compile Include="FieldInitializator.cs" />
     <Compile Include="GoToPrison.cs" />
     <Compile Include="Interfaces\ICard.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Models\Cards\MoveCard.cs" />
     <Compile Include="Models\Players\Symbols.cs" />
     <Compile Include="ParkingSpace.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Models\Cards\SpaceCard.cs" />
     <Compile Include="NotPurchasableSpace.cs" />
