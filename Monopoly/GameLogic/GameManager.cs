@@ -87,15 +87,19 @@
             this.DrawEngine.DrawField();
             while (true)
             {
-                this.dice.ThrowDices();
-                this.dice.FirstDiceValue += 1;
-                this.dice.SecondDiceValue += 1;
+
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
 
 
                 var player = players[currentPlayerCounter];
-               
+                this.DrawEngine.DrawText(52, 13, "Player : " + player.ToString() + "'s turn");
+                this.DrawEngine.DrawText(45, 15, "Press ENTER key to throw dices");
+                Console.ReadLine();
+                this.drawEngine.DrawText(45, 15, new string(' ', 35));
+                this.dice.ThrowDices();
+                this.dice.FirstDiceValue += 1;
+                this.dice.SecondDiceValue += 1;
 
                 if (this.Dice.FirstDiceValue == this.Dice.SecondDiceValue)
                 {
@@ -374,7 +378,7 @@
             {
                 if (player.Bankroll < currentPropertySpace.BuyingPrice)
                 {
-                    this.DrawEngine.DrawText(0, 1, "Not Enough Money To Buy The Property");
+                    this.DrawEngine.DrawText(40, 30, "Not Enough Money To Buy The Property");
                 }
                 else
                 {
