@@ -8,7 +8,6 @@ namespace MonopolyConsoleClient.Interfaces
 {
     public interface IPurchasable
     {
-        string Name {get;}
         decimal BuyingPrice { get; }
         decimal SellingPrice { get; }
         decimal MortgageValue { get; }

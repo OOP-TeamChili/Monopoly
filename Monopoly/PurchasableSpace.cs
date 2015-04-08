@@ -9,7 +9,6 @@
         private const decimal MinMortgageValue = 1;
         private const decimal MinRentPrice = 1;
 
-        private string name;
         private decimal buyingPrice;
         private decimal sellingPrice;
         private decimal mortgageValue;
@@ -19,8 +18,8 @@
 
         //the idea is - all prices to be created when the object is created, as everything like price, name and etc is given in the beginning of the game.
         public PurchasableSpace(string currentName, decimal currentPrice, decimal currentMortgageValue, decimal currentRent)
+            : base(currentName)
         {
-            this.Name = currentName;
             this.BuyingPrice = currentPrice;
             this.SellingPrice = this.BuyingPrice / 2;
             this.MortgageValue = currentMortgageValue;
@@ -31,22 +30,6 @@
 
         //the set of Name and prices will be private because the values cannot change in the game. 
         //TODO: Move implementation of the Name property to super class Space
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            private set
-            {
-                if (String.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException("Property name cannot be null or empty");
-                }
-
-                this.name = Name;
-            }
-        }
 
         public decimal BuyingPrice
         {

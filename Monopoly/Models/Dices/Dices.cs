@@ -6,7 +6,7 @@
 
     using Monopoly.Interfaces;
     
-    public class Dices : IRotateble
+    public class Dices : IDice, IRotateble
     {
         private static Random rand = new Random();
         private RandomGenerator random = new RandomGenerator(rand);
@@ -44,7 +44,7 @@
         }
 
         //Rotate the dice runtime
-        public void Rotate()
+        public void Roll()
         {
             this.FirstDiceValue = random.Next(1, 7);
             this.SecondDiceValue = random.Next(1, 7);

@@ -1,14 +1,12 @@
-﻿using Monopoly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonopolyConsoleClient
+﻿namespace MonopolyConsoleClient
 {
-    public class Jail:Space
-    {
+    using Monopoly;
 
+    public class Jail : NotPurchasableSpace
+    {
+        public Jail()
+            : base("Jail")
+        {
+        }
     }
 }

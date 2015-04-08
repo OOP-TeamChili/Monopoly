@@ -26,9 +26,10 @@
             this.PrintTextAtPosition(x, y, text);
         }
 
-        public void DrawPlayer(Player player)
+        public void DrawPlayer(Player player, int oldX, int oldY)
         {
-            throw new System.NotImplementedException();
+            this.PrintTextAtPosition(oldX, oldY, " ");
+            this.PrintTextAtPosition(player.PosX, player.PosY, player.Symbol.ToString());
         }
 
         private void PrintTextAtPosition(int x, int y, string text)

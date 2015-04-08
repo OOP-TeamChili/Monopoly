@@ -4,18 +4,27 @@
 
     public abstract class Space
     {
-        private int name;
+        private string name;
 
-        public event EventHandler playerLanded;
+        public Space(string name)
+        {
+            this.Name = name;
+        }
 
-        public int Name
+        public string Name
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.name;
             }
-            set
+            private set
             {
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("Property name cannot be null or empty");
+                }
+
+                this.name = Name;
             }
         }
     }

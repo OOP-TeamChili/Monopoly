@@ -49,10 +49,11 @@
   <ItemGroup>
     <Compile Include="ChanceSpace.cs" />
     <Compile Include="GoToPrison.cs" />
+    <Compile Include="Interfaces\IDice.cs" />
     <Compile Include="Interfaces\IDrawingEngine.cs" />
     <Compile Include="Interfaces\IPurchasable.cs" />
+    <Compile Include="Interfaces\IStreet.cs" />
     <Compile Include="Jail.cs" />
-    <Compile Include="Models\Cards\BadLuckCard.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BuildingType.cs" />
     <Compile Include="Models\Cards\CardInitializer.cs" />
@@ -74,13 +75,9 @@
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Models\Cards\SafeCard.cs" />
     <Compile Include="Models\Cards\SpaceCard.cs" />
-    <Compile Include="Street.cs" />
-    <Compile Include="LuckySpace.cs" />
     <Compile Include="NotPurchasableSpace.cs" />
     <Compile Include="Models\Players\Player.cs" />
-    <Compile Include="PrisonSpace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property.cs" />
     <Compile Include="PropertySpace.cs" />
     <Compile Include="PurchasableSpace.cs" />
     <Compile Include="RailRoad.cs" />

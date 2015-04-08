@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace Monopoly
 {
-    public class ChanceSpace : Space
+    public class ChanceSpace : NotPurchasableSpace
     {
+        public ChanceSpace()
+            : base("Chance")
+        {
+        }
+
         public ChanceCard ChanceCardPull()
         {
             Queue<ChanceCard> chanceCards = CardInitializer.InitializeChanceList();
