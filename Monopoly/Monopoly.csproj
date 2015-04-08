@@ -7,7 +7,7 @@
     <ProjectGuid>{B1A13ED8-0829-4BBF-A919-97CCBE76B42C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MonopolyConsoleClient</RootNamespace>
+    <RootNamespace>Monopoly</RootNamespace>
     <AssemblyName>Monopoly</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
