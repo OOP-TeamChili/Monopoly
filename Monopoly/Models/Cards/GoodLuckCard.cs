@@ -1,8 +1,9 @@
 ﻿namespace Monopoly.Cards
 {
+    using Monopoly.Interfaces;
     using System;
 
-    public class GoodLuckCard : ChanceCard
+    public class GoodLuckCard : ChanceCard, ICard
     {
         private const decimal MinCash = 0; 
         private decimal cash;
