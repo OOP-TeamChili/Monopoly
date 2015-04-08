@@ -3,7 +3,7 @@
     using Monopoly.Interfaces;
     using Monopoly.Players;
 
-    public class SpaceCard : ChanceCard, ISavable
+    public class SpaceCard : ChanceCard, ICard
     {
         private int positionToGo;
 
@@ -31,13 +31,5 @@
                 this.positionToGo = value;
             }
         }
-
-        public void AddToPlayer(Player player)
-        {
-            //TODO: check why this is added
-            //player.KeepCard(new SpaceCard(this.Description, this.positionToGo, this.CardType));
-        }
-
-       
     }
 }

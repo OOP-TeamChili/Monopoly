@@ -30,7 +30,7 @@
         public void DrawPlayer(Player player, int oldX, int oldY)
         {
             this.PrintTextAtPosition(oldX, oldY, " ");
-            this.PrintTextAtPosition(player.PosX, player.PosY, player.Symbol.ToString());
+            this.PrintTextAtPosition(player.PosX, player.PosY, player.ToString());
         }
 
         public void DrawField()

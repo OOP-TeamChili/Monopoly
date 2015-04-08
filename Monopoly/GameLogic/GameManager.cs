@@ -17,6 +17,7 @@
         private const int DiceMaxValue = 6;
         private const int PositionsOnBoard = 40;
         private const int CycleCash = 200;
+        private const int JailPosition = 10;
         private static GameManager instance;
         private IDrawingEngine drawEngine;
         private IDice dice;
@@ -203,7 +204,7 @@
             }
             if (currentSpace is GoToPrison)
             {
-                player.Position = 10;
+                player.Position = GameManager.JailPosition;
                 currentSpace = listOfSpaces[player.Position];
                 CheckSpaces(players, listOfSpaces, CommunityChestSpaceObject, ChanceSpaceObject, currentPlayerCounter, player, currentSpace);
             }           

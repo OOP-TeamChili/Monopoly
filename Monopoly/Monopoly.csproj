@@ -50,6 +50,7 @@
     <Compile Include="ChanceSpace.cs" />
     <Compile Include="FieldInitializator.cs" />
     <Compile Include="GoToPrison.cs" />
+    <Compile Include="Interfaces\ICard.cs" />
     <Compile Include="Interfaces\IDice.cs" />
     <Compile Include="Interfaces\IDrawCard.cs" />
     <Compile Include="Interfaces\IDrawingEngine.cs" />
@@ -70,12 +71,10 @@
     <Compile Include="Models\Cards\GoodLuckCard.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Interfaces\IRotateble.cs" />
-    <Compile Include="Interfaces\ISavable.cs" />
     <Compile Include="Models\Cards\MoveCard.cs" />
     <Compile Include="Models\Players\Symbols.cs" />
     <Compile Include="ParkingSpace.cs" />
     <Compile Include="RandomGenerator.cs" />
-    <Compile Include="Models\Cards\SafeCard.cs" />
     <Compile Include="Models\Cards\SpaceCard.cs" />
     <Compile Include="NotPurchasableSpace.cs" />
     <Compile Include="Models\Players\Player.cs" />

@@ -1,7 +1,9 @@
 ﻿namespace Monopoly.Cards
 {
     using System;
-    public class MoveCard : ChanceCard
+    using Monopoly.Interfaces;
+
+    public class MoveCard : ChanceCard, ICard
     {
         private const int MinSquaresToMove = 0;
         //private const int MaxSquaresToMove = Max element of the field. - Add it please :)
@@ -16,8 +18,8 @@
         }
 
         //constructor for cards that will move the player and money will be exchanged.
-        public MoveCard(string currentDescription, int moveSquares, CardType type, decimal howMuch)
-            : base(currentDescription, type, howMuch)
+        public MoveCard(string currentDescription, int moveSquares, CardType type)
+            : base(currentDescription, type)
         {
             this.SquaresToMove = moveSquares;
         }

@@ -2,7 +2,7 @@
 {
     using Monopoly;
 
-    public class GoToPrison : Space
+    public class GoToPrison : NotPurchasableSpace
     {
         public GoToPrison()
             : base("Go to jail")

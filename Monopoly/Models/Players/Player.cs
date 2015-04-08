@@ -17,8 +17,6 @@
         public string Name { get; set; }
         //private List<purchasableSpaces> ownedSpaces = new List<purchasableSpaces>();
         private int totalValue;
-        private List<ISavable> cards;
-        
         private int position;
         private List<PurchasableSpace> listOfProperties;
         public int OwnedStations { get; set; }
@@ -27,16 +25,11 @@
         public int PosX { get; set; }
         public int PosY { get; set; }
         public bool IsInJail  { get; set; }
-        public Player()
-        {
-            throw new NotImplementedException();
-        }
 
         public Player(int playerNumber, string playerName, Symbols symbol, int startPos = 0, int startBankroll = 500, int ownedStations = 0, int ownedUtilities = 0)
         {
             this.PlayerNumber = playerNumber;
             this.Name = playerName;
-            this.cards = new List<ISavable>();
             this.Position = startPos;
             this.Bankroll = startBankroll;
             this.OwnedStations = ownedStations;
@@ -81,55 +74,12 @@
             }
         }
 
-        public List<ISavable> Cards
-        {
-            get
-            {
-                return new List<ISavable>(cards);
-            }
-        }
-
         public List<PurchasableSpace> ListOfProperties
         {
             get
             {
                 return new List<PurchasableSpace>(this.listOfProperties);
             }
-        }
-        //TODO: token 
-
-        //method to take and keep the card for later.
-        public void KeepCard(ISavable card)
-        {
-            this.cards.Add(card);
-        }
-
-        //Method to move the player when takes a chance card.
-        public void CardMove(ChanceCard card)
-        {
-            //player.position += this.SquaresToMove
-            throw new NotImplementedException();
-        }
-
-        //Method to pay or get paid when picks up a card.
-        public void CardPay(ChanceCard card)
-        {
-            if (card.CardType == CardType.BadLuckCard)
-            {
-                this.Bankroll = this.Bankroll - (int)card.Cash;
-            }
-            else if (card.CardType == CardType.LuckyCard)
-            {
-                this.Bankroll = this.Bankroll + (int)card.Cash;
-            }
-        }
-
-        //Method to mvoe the player to a specific space by card.
-        public void GoToSpace(ChanceCard card)
-        {
-            //if space owned - pay the player
-            //if not - decide whether to buy or not.
-            CardPay(card); // this method stays because there are cards that move the player and the player pays or get paid by the card.
         }
 
         public void AddCash(int moneyToAdd)
@@ -149,9 +99,7 @@
 
         public override string ToString()
         {
-            throw new System.NotImplementedException();
-            
-            
+            return this.Symbol.ToString();
         }
 
         public ChanceCard DrawCard(Queue<ChanceCard> listOfCards)
