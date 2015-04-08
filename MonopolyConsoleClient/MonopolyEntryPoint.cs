@@ -95,7 +95,6 @@
             #endregion playersInitializingplayer
 
 
-            //After throwing the dices we can get their values by the properties FirstDiceValue and SecondDiceValue
            // Dices dices = new Dices(5, 0);
            // dices.ThrowDices();
 

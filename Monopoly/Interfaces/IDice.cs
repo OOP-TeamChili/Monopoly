@@ -2,8 +2,9 @@
 {
     public interface IDice
     {
-        int FirstDiceValue { get; }
-        int SecondDiceValue { get;  }
+        int FirstDiceValue { get; set; }
+        int SecondDiceValue { get; set; }
         void Roll();
+        void ThrowDices();
     }
 }

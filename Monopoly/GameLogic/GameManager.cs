@@ -27,7 +27,7 @@
         private GameManager(IDrawingEngine drawEngine)
         {
             this.DrawEngine = drawEngine;
-            this.Dice = new Dices(5, 0);
+            this.dice = new Dices(19,50);
         }
 
         //SINGLETON DESIGN PATTERN
@@ -87,14 +87,13 @@
             this.DrawEngine.DrawField();
             while (true)
             {
-                //Dices dices = new Dices(5, 0);
-                this.Dice.Roll();
-                //this.Dice.FirstDiceValue = 1;
-                //this.Dice.SecondDiceValue = 1;
+                this.dice.ThrowDices();
+                this.dice.FirstDiceValue += 1;
+                this.dice.SecondDiceValue += 1;
                 //this.DrawEngine.DrawDices(dices.FirstDiceValue, dices.SecondDiceValue);
                 //this.DrawEngine.DrawText(80, 50, string.Format("{0} {1}", this.Dice.FirstDiceValue, this.Dice.SecondDiceValue));
-                //Console.WriteLine(dices.FirstDiceValue);
-                //Console.WriteLine(dices.SecondDiceValue); 
+
+
                 var player = players[currentPlayerCounter];
                
 
@@ -348,7 +347,7 @@
         //Method for FREE PROPERTY SPACE - player has to make decision whether he want to buy it or not
         private void FreeSpace(Player[] players, IList<Space> listOfSpaces, int currentPlayer, Player player, PurchasableSpace currentPropertySpace)
         {
-            this.DrawEngine.DrawText(40, 30, "Player to decide - buy(1) OR pass(2)");
+            this.DrawEngine.DrawText(40, 30, "Player to decide - buy(1) OR pass(2) : ");
             bool isInvalidInput=true;
             int decision = 0;
             do
